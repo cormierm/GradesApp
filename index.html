@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Grades App</title>
+    <!-- jQuery imports -->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <script src="js/lib/jquery.validate.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+    <!-- Our imports -->
+    <script src="js/global.js"></script>
+    <script src="js/facade.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/gradesDAL.js"></script>
+    <script src="js/util.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="pageHome" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1> Home Page </h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
+                    <li><a href="#pageAdd" data-icon="plus">Add</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <h1>Matt and Margo's Grades App</h1>
+            <p align="center" id="pHomeGrade">88%</p>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
+        </footer>
+    </div>
+    <!-- Grades Page -->
+    <div id="pageGrades" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1> Grades Page </h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="grid" class="ui-btn-active ui-state-persist">Grades</a></li>
+                    <li><a href="#pageAdd" data-icon="plus">Add</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <h2>Your Grades</h2>
+            <ul data-role="listview" class="ui-listview-inset" id="lstGrades">
+                <li>
+                    <a href="#">
+                        <h3>Course: Math</h3>
+                        <p>Grade: 99%</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h3>Course: Programming Fundamentals</h3>
+                        <p>Grade: 87%</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
+        </footer>
+    </div>
+    <!-- Add Page -->
+    <div id="pageAdd" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1> Add Page </h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
+                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <h2>Add Page</h2>
+            <a href="#pageAddProgram" data-role="button" data-icon="plus" data-iconpos="left">Add Program</a>
+            <a href="#pageAddCourse" data-role="button" data-icon="plus" data-iconpos="left">Add Course</a>
+            <a href="#pageAddGrade" data-role="button" data-icon="plus" data-iconpos="left">Add Grade</a>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
+        </footer>
+    </div>
+    <!-- Add Program Page -->
+    <div id="pageAddProgram" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1> Add Page </h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
+                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <h2>Add Program</h2>
+            <form id="frmAddProg">
+                <label for="txtAddProgName">Program Name:</label>
+                <input type="text" name="txtAddProgName" id="txtAddProgName">
+                <input type="checkbox" id="chkAddProgIsActive" name="chkAddProgIsActive" data-role="checkbox" checked>
+                <label for="chkAddProgIsActive">Is Active?</label>
+                <input type="submit" data-role="button" id="btnAddProgAdd" name="btnAddProgAdd" value="Add Program">
+                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+            </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
+        </footer>
+    </div>
+    <!-- Add Course Page -->
+    <div id="pageAddCourse" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1> Add Page </h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
+                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <h2>Add Course</h2>
+            <form id="frmAddCourse">
+                <label for="selAddCoursePrograms">Program:</label>
+                <select name="selAddCoursePrograms" id="selAddCoursePrograms">
+                    <option value="NotInit">Not Initialized</option>
+                </select>
+                <label for="txtAddCourseName">Course Name:</label>
+                <input type="text" name="txtAddCourseName" id="txtAddCourseName">
+                <input type="checkbox" id="chkAddCourseIsActive" name="chkAddCourseIsActive" data-role="checkbox" checked>
+                <label for="chkAddCourseIsActive">Is Active?</label>
+                <input type="submit" data-role="button" id="btnAddCourseAdd" name="btnAddCourseAdd" value="Add Course">
+                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+            </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
+        </footer>
+    </div>
+    <!-- Add Grade Page -->
+    <div id="pageAddGrade" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1> Add Page </h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
+                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <h2>Add Course</h2>
+            <form id="frmAddGrade">
+                <label for="selAddGradeCourses">Course:</label>
+                <select name="selAddGradeCourses" id="selAddGradeCourses">
+                    <option value="NotInit">Not Initialized</option>
+                </select>
+                <label for="txtAddGradeName">Assignment/Exam Name:</label>
+                <input type="text" name="txtAddGradeName" id="txtAddGradeName">
+                <label for="txtAddGradeWeight">Weight:</label>
+                <input type="text" name="txtAddGradeWeight" id="txtAddGradeWeight">
+                <label for="txtAddGradeGrade">Grade:</label>
+                <input type="text" name="txtAddGradeGrade" id="txtAddGradeGrade">
+                <input type="submit" data-role="button" id="btnAddGradeAdd" name="btnAddGradeAdd" value="Add Grade">
+                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+            </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
+        </footer>
+    </div>
+</body>
+</html>
