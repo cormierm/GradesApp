@@ -22,6 +22,10 @@ function pageAddCourse_pageshow() {
     populateSelectListPrograms($("#selAddCoursePrograms"));
 }
 
+function pageGrades_pageshow() {
+    generateGradesList();
+}
+
 function init() {
     $("#btnAddProgAdd").on("click", btnAddProgAdd_click);
     $("#btnAddCourseAdd").on("click", btnAddCourseAdd_click);
@@ -29,7 +33,8 @@ function init() {
 
 
     $("#pageAddCourse").on("pageshow", pageAddCourse_pageshow);
-    $("#pageAddGrade").on("pageshow", pageAddGrade_pageshow)
+    $("#pageAddGrade").on("pageshow", pageAddGrade_pageshow);
+    $("#pageGrades").on("pageshow", pageGrades_pageshow);
 }
 
 function initDB() {

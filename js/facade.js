@@ -25,6 +25,34 @@ function addGrade() {
     Grade.insert(options);
 }
 
+function generateGradesList() {
+    $("#lstGrades").html("");
+    function successSelectAll(tx, results) {
+        for (var i=0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            generateCourseHtmlByProgramId(row['name'],row['id']);
+        }
+    }
+    Program.selectAll(successSelectAll);
+}
+
+function generateCourseHtmlByProgramId(programName, programId){
+    var courseHtmlCode = "<h1>" + programName + "</h1>";
+    function successSelectAllCoursesByProgramId(tx, results) {
+        courseHtmlCode += "<ul>";
+        for (var i=0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            courseHtmlCode += "<li>" + row['name'] + "</li>";
+        }
+        courseHtmlCode += "</ul>";
+        var listGrades = $("#lstGrades");
+        listGrades.html(listGrades.html() + courseHtmlCode);
+        listGrades.listview('refresh');
+    }
+    var options = [programId];
+    Course.selectAllByProgram(successSelectAllCoursesByProgramId, options);
+}
+
 function populateSelectListPrograms(selectList) {
     function successSelectAll(tx, results) {
         var htmlCode = "";

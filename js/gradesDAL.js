@@ -37,6 +37,13 @@ var Course = {
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     },
+    selectAllByProgram: function (successSelectAll, options) {
+        function txFunction(tx) {
+            var sql = "SELECT * FROM course WHERE programId=?;";
+            tx.executeSql(sql, options, successSelectAll, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
     insert: function(options) {
         function txFunction(tx) {
             var sql = "INSERT INTO course " +
