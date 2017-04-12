@@ -59,7 +59,7 @@ function generateGradeHtmlByCourseId(courseId){
     function successSelectAllCoursesByCourseId(tx, results) {
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            gradeHtmlCode += "<p>" + row['name'] + " Grade: " + row['grade'] + "</p>";
+            gradeHtmlCode += "<p>" + row['name'] + " Weight: " + row['weight'] + " Grade: " + row['grade'] + "</p>";
         }
         var listCourse = $("#courseId" + courseId);
         listCourse.html(gradeHtmlCode);

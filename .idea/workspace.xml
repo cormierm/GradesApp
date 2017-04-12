@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20e239ba-171f-4bda-b6f3-292807e541b0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/facade.js" afterPath="$PROJECT_DIR$/js/facade.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/gradesDAL.js" afterPath="$PROJECT_DIR$/js/gradesDAL.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -80,8 +78,8 @@
       <file leaf-file-name="facade.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/facade.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="50" column="35" lean-forward="false" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+            <state relative-caret-position="234">
+              <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
               <folding>
                 <element signature="n#!!doc;n#addProgram#0" expanded="false" />
               </folding>
@@ -266,16 +264,16 @@
       <workItem from="1491931407244" duration="9802000" />
       <workItem from="1492006825688" duration="54000" />
       <workItem from="1492006888712" duration="5845000" />
-      <workItem from="1492018883342" duration="3772000" />
+      <workItem from="1492018883342" duration="4278000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19802000" />
+    <option name="totallyTimeSpent" value="20308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="370" y="11" width="1267" height="1000" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12709832" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -596,8 +594,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/facade.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="50" column="35" lean-forward="false" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+        <state relative-caret-position="234">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
           <folding>
             <element signature="n#!!doc;n#addProgram#0" expanded="false" />
           </folding>
