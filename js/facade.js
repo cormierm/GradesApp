@@ -39,18 +39,33 @@ function generateGradesList() {
 function generateCourseHtmlByProgramId(programName, programId){
     var courseHtmlCode = "<h1>" + programName + "</h1>";
     function successSelectAllCoursesByProgramId(tx, results) {
-        courseHtmlCode += "<ul>";
+        courseHtmlCode += "<ul data-role='list-view' class='ui-listview-inset' id='lstProgram" + programId + "'>";
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            courseHtmlCode += "<li>" + row['name'] + "</li>";
+            courseHtmlCode += "<li><h3>" + row['name'] + "</h3><div id='courseId" + row['id'] + "'></div></li>";
+            generateGradeHtmlByCourseId(row['id']);
         }
         courseHtmlCode += "</ul>";
         var listGrades = $("#lstGrades");
         listGrades.html(listGrades.html() + courseHtmlCode);
-        listGrades.listview('refresh');
+        $("#lstProgram" + programId).listview("refresh");
     }
     var options = [programId];
     Course.selectAllByProgram(successSelectAllCoursesByProgramId, options);
+}
+
+function generateGradeHtmlByCourseId(courseId){
+    var gradeHtmlCode = "";
+    function successSelectAllCoursesByCourseId(tx, results) {
+        for (var i=0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            gradeHtmlCode += "<p>" + row['name'] + " Grade: " + row['grade'] + "</p>";
+        }
+        var listCourse = $("#courseId" + courseId);
+        listCourse.html(gradeHtmlCode);
+    }
+    var options = [courseId];
+    Grade.selectAllByCourse(successSelectAllCoursesByCourseId, options);
 }
 
 function populateSelectListPrograms(selectList) {

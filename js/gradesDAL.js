@@ -62,8 +62,15 @@ var Course = {
 var Grade = {
     selectAll: function (successSelectAll) {
         function txFunction(tx) {
-            var sql = "SELECT * FROM course;";
+            var sql = "SELECT * FROM grade;";
             var options = [];
+            tx.executeSql(sql, options, successSelectAll, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    selectAllByCourse: function (successSelectAll, options) {
+        function txFunction(tx) {
+            var sql = "SELECT * FROM grade WHERE courseId=?;";
             tx.executeSql(sql, options, successSelectAll, errorHandler);
         }
         db.transaction(txFunction, errorHandler, successTransaction);
