@@ -119,17 +119,19 @@ function generateGradeHtmlByCourseId(courseId){
     function successSelectAllCoursesByCourseId(tx, results) {
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            gradeHtmlCode += "<a class='gradeListItem' data-role='button' data-row-id=" + row['id'] + " href='#'>" +
-                "<p>" + row['name'] + " Weight: " + row['weight'] + " Grade: " + row['grade'] + "</p></a>";
+            gradeHtmlCode += "<p><a class='gradeListItem' data-row-id=" + row['id'] + " href='#'>" +
+                row['name'] + " Weight: " + row['weight'] + " Grade: " + row['grade'] + "</a></p>";
         }
-
-        $(".gradeListItem").on("click", clickHandler);
         var listCourse = $("#courseId" + courseId);
         listCourse.html(gradeHtmlCode);
-        function clickHandler() {
+
+        function clickGradeHandler() {
             localStorage.setItem("selectedGradeId", $(this).attr("data-row-id"));
             $(location).prop('href', "#pageModifyGrade");
         }
+        $(".gradeListItem").on("click", clickGradeHandler);
+
+
     }
     var options = [courseId];
     Grade.selectAllByCourse(successSelectAllCoursesByCourseId, options);
@@ -177,7 +179,6 @@ function populateSelectListCourses(selectList, courseId) {
 
 function loadModifyCoursePage() {
     var courseId = localStorage.getItem("selectedCourseId");
-    console.info("Loading Mod Course Page id=" + courseId);
     function successSelectOne(tx, results) {
         var row = results.rows[0];
         $("#txtModifyCourseName").val(row['name']);
@@ -196,7 +197,6 @@ function loadModifyCoursePage() {
 
 function loadModifyProgramPage() {
     var programId = localStorage.getItem("selectedProgramId");
-    console.info("Loading Mod Program Page id=" + programId);
     function successSelectOne(tx, results) {
         var row = results.rows[0];
         $("#txtModifyProgName").val(row['name']);
@@ -214,7 +214,6 @@ function loadModifyProgramPage() {
 
 function loadModifyGradePage() {
     var gradeId = localStorage.getItem("selectedGradeId");
-    console.info("Loading Mod Program Page id=" + gradeId);
     function successSelectOne(tx, results) {
         var row = results.rows[0];
         $("#txtModifyGradeName").val(row['name']);

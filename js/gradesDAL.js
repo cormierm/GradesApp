@@ -18,7 +18,6 @@ var Program = {
             var sql = "SELECT * FROM program WHERE id=?;";
             tx.executeSql(sql, options, successSelectOne, errorHandler);
         }
-
         db.transaction(txFunction, errorHandler, successTransaction);
     },
     insert: function(options) {
@@ -80,7 +79,6 @@ var Course = {
             var sql = "SELECT * FROM course WHERE id=?;";
             tx.executeSql(sql, options, successSelectOne, errorHandler);
         }
-
         db.transaction(txFunction, errorHandler, successTransaction);
     },
     insert: function(options) {
@@ -110,15 +108,12 @@ var Course = {
     delete: function (options) {
         function txFunction(tx) {
             var sql = "DELETE FROM course WHERE id=?;";
-
             function successCourseDelete() {
                 console.info("Success: Delete successful");
                 alert ("Course deleted successfully");
             }
-
             tx.executeSql(sql, options, successCourseDelete, errorHandler);
         }
-
         db.transaction(txFunction, errorHandler, successTransaction);
     }
 
