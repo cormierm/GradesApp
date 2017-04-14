@@ -13,6 +13,14 @@ var Program = {
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     },
+    select: function (options, successSelectOne) {
+        function txFunction(tx) {
+            var sql = "SELECT * FROM program WHERE id=?;";
+            tx.executeSql(sql, options, successSelectOne, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
     insert: function(options) {
         function txFunction(tx) {
             var sql = "INSERT INTO program " +
@@ -23,6 +31,29 @@ var Program = {
                 alert("New Program Added");
             }
             tx.executeSql(sql, options, successInsertProgram, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    update: function(options) {
+        function txFunction(tx) {
+            var sql = "UPDATE program SET name=?, isActive=? WHERE id=?;";
+            function successUpdateCourse() {
+                console.info("SQL Success: Successfully updated program.");
+                alert("Program Updated");
+            }
+            tx.executeSql(sql, options, successUpdateCourse, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    delete: function (options) {
+        function txFunction(tx) {
+            var sql = "DELETE FROM program WHERE id=?;";
+
+            function successCourseDelete() {
+                console.info("Success: Delete successful");
+                alert ("Program deleted successfully");
+            }
+            tx.executeSql(sql, options, successCourseDelete, errorHandler);
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     }
@@ -44,6 +75,14 @@ var Course = {
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     },
+    select: function (options, successSelectOne) {
+        function txFunction(tx) {
+            var sql = "SELECT * FROM course WHERE id=?;";
+            tx.executeSql(sql, options, successSelectOne, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
     insert: function(options) {
         function txFunction(tx) {
             var sql = "INSERT INTO course " +
@@ -56,7 +95,33 @@ var Course = {
             tx.executeSql(sql, options, successInsertCourse, errorHandler);
         }
         db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    update: function(options) {
+        function txFunction(tx) {
+            var sql = "UPDATE course SET programId=?, name=?, isActive=? WHERE id=?;";
+            function successUpdateCourse() {
+                console.info("SQL Success: Successfully updated course.");
+                alert("Course Updated");
+            }
+            tx.executeSql(sql, options, successUpdateCourse, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    delete: function (options) {
+        function txFunction(tx) {
+            var sql = "DELETE FROM course WHERE id=?;";
+
+            function successCourseDelete() {
+                console.info("Success: Delete successful");
+                alert ("Course deleted successfully");
+            }
+
+            tx.executeSql(sql, options, successCourseDelete, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
     }
+
 }
 
 var Grade = {
@@ -75,6 +140,13 @@ var Grade = {
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     },
+    select: function (options, successSelectOne) {
+        function txFunction(tx) {
+            var sql = "SELECT * FROM grade WHERE id=?;";
+            tx.executeSql(sql, options, successSelectOne, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
     insert: function(options) {
         function txFunction(tx) {
             var sql = "INSERT INTO grade " +
@@ -85,6 +157,28 @@ var Grade = {
                 alert("New Course Added");
             }
             tx.executeSql(sql, options, successInsertCourse, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    update: function(options) {
+        function txFunction(tx) {
+            var sql = "UPDATE grade SET courseId=?, name=?, weight=?, grade=? WHERE id=?;";
+            function successUpdate() {
+                console.info("SQL Success: Successfully updated course.");
+                alert("Course Updated");
+            }
+            tx.executeSql(sql, options, successUpdate, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    delete: function (options) {
+        function txFunction(tx) {
+            var sql = "DELETE FROM grade WHERE id=?;";
+            function successDelete() {
+                console.info("Success: Delete successful");
+                alert ("Grade deleted successfully");
+            }
+            tx.executeSql(sql, options, successDelete, errorHandler);
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     }
