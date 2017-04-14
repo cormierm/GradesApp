@@ -3,19 +3,27 @@
  */
 
 function btnAddProgAdd_click() {
-    addProgram();
+    if(doValidate_frmAddProg()) {
+        addProgram();
+    }
 }
 
 function btnAddCourseAdd_click() {
-    addCourse();
+    if(doValidate_frmAddCourse()){
+        addCourse();
+    }
 }
 
 function btnAddGradeAdd_click() {
-    addGrade();
+    if(doValidate_frmAddGrade()){
+        addGrade();
+    }
 }
 
 function btnModifyCourseUpdate_click() {
-    updateCourse();
+    if(doValidate_frmModifyCourse()){
+        updateCourse();
+    }
 }
 
 function btnModifyCourseDelete_click() {
@@ -23,7 +31,9 @@ function btnModifyCourseDelete_click() {
 }
 
 function btnModifyProgUpdate_click() {
-    updateProgram();
+    if(doValidate_frmModifyProg()){
+        updateProgram();
+    }
 }
 
 function btnModifyProgDelete_click() {
@@ -31,7 +41,10 @@ function btnModifyProgDelete_click() {
 }
 
 function btnModifyGradeUpdate_click() {
-    updateGrade();
+    if(doValidate_frmModifyGrade()){
+        updateGrade();
+    }
+
 }
 
 function btnModifyGradeDelete_click() {
