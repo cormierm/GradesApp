@@ -4,6 +4,23 @@
  * Created On: April 14, 2017
  */
 
+function calculateGrade(courseId, returnSelector, returnSumSelector){
+    function successSelectAllCoursesByCourseId(tx, results) {
+        var totalGrades = 0;
+        var totalWeights = 0;
+        for (var i=0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            totalGrades += (row['weight'] / 100) * row['grade'];
+            totalWeights += row['weight'];
+        }
+        var totalAverageGrade = totalGrades / (totalWeights / 100)
+        $("#" + returnSelector).html(totalAverageGrade);
+        $("#" + returnSumSelector).html(totalGrades);
+    }
+    var options = [courseId];
+    Grade.selectAllByCourse(successSelectAllCoursesByCourseId, options);
+}
+
 function doValidate_frmAddProg() {
     var form = $("#frmAddProg");
     form.validate({

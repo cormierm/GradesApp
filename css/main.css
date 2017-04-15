@@ -15,3 +15,9 @@ select.error,
 textarea.error {
     border: 1px red solid;
 }
+
+.spanGrade {
+    font-size: .8em;
+    padding: 0;
+    margin: 0;
+}
