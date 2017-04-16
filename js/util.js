@@ -28,7 +28,7 @@ function doValidate_frmAddProg() {
             txtAddProgName: {
                 required: true,
                 minlength: 2,
-                maxlength: 20
+                maxlength: 30
             }
         },
         messages: {
@@ -52,7 +52,7 @@ function doValidate_frmAddCourse() {
             txtAddCourseName: {
                 required: true,
                 minlength: 2,
-                maxlength: 20
+                maxlength: 30
             }
         },
         messages: {
@@ -79,7 +79,7 @@ function doValidate_frmAddGrade() {
             txtAddGradeName: {
                 required: true,
                 minlength: 2,
-                maxlength: 20
+                maxlength: 30
             },
             txtAddGradeWeight: {
                 required: true,
@@ -124,7 +124,7 @@ function doValidate_frmModifyProg() {
             txtModifyProgName: {
                 required: true,
                 minlength: 2,
-                maxlength: 20
+                maxlength: 30
             }
         },
         messages: {

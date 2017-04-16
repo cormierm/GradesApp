@@ -37,6 +37,7 @@ function updateCourse() {
     var isActive = $("#chkModifyCourseIsActive").prop("checked");
     var options = [programId, courseName, isActive, courseId];
     Course.update(options);
+    $(location).prop('href', "#pageModifyCourse");
 }
 
 function deleteCourse() {
@@ -85,19 +86,19 @@ function generateGradesList() {
 
 function generateCourseHtmlByProgramId(programName, programId){
     var courseHtmlCode = "<a class='programListItem' data-row-id=" + programId + " href='#'>" +
-        "<h1>" + programName + "</h1></a>";
+        "<h3>" + programName + "</h3></a>";
     function successSelectAllCoursesByProgramId(tx, results) {
         courseHtmlCode += "<ul data-role='listview' id='lstProgram" + programId + "'>";
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            courseHtmlCode += "<li><a class='courseListItem' data-role='button' data-row-id=" + row['id'] + " href='#'>" +
-                "<h3>" + row['name'] + "</h3></a>" +
+            courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row['id'] + " href='#'><li>" +
+                "<h3>" + row['name'] + "</h3>" +
                 "<p></p><span class='spanGrade'>Total Average: <span id='spanCalculatedGrade"+ row['id'] + "'></span>% " +
                 "Sum of Grades: <span id='spanCalculatedSumGrade"+ row['id'] + "'></span>%</span></p>" +
-                "<div id='courseId" + row['id'] + "'></div>" +
-                "</li>";
+                //"<div id='courseId" + row['id'] + "'></div>" +
+                "</li></a>";
             calculateGrade(row['id'], "spanCalculatedGrade" + row['id'], "spanCalculatedSumGrade" + row['id']);
-            generateGradeHtmlByCourseId(row['id']);
+            // generateGradeHtmlByCourseId(row['id']);
         }
         function clickCourseHandler() {
             localStorage.setItem("selectedCourseId", $(this).attr("data-row-id"));
@@ -122,11 +123,15 @@ function generateGradeHtmlByCourseId(courseId){
     function successSelectAllCoursesByCourseId(tx, results) {
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            gradeHtmlCode += "<p><a class='gradeListItem' data-row-id=" + row['id'] + " href='#'>" +
-                row['name'] + " Weight: " + row['weight'] + " Grade: " + row['grade'] + "</a></p>";
+            gradeHtmlCode += "<li><a class='gradeListItem' data-row-id=" + row['id'] + " href='#'>" +
+                row['name'] + " Weight: " + row['weight'] + " Grade: " + row['grade'] + "</a></li>";
         }
-        var listCourse = $("#courseId" + courseId);
-        listCourse.html(gradeHtmlCode);
+        var list = $("#courseGradeList");
+        list.html(gradeHtmlCode);
+        list.listview("refresh");
+
+        //var listCourse = $("#courseId" + courseId);
+        //listCourse.html(gradeHtmlCode);
 
         function clickGradeHandler() {
             localStorage.setItem("selectedGradeId", $(this).attr("data-row-id"));
@@ -181,9 +186,12 @@ function populateSelectListCourses(selectList, courseId) {
 }
 
 function loadModifyCoursePage() {
+    $("#frmModifyCourse").prop("hidden", true);
     var courseId = localStorage.getItem("selectedCourseId");
+    generateGradeHtmlByCourseId(courseId);
     function successSelectOne(tx, results) {
         var row = results.rows[0];
+        $("#headerModifyCourseName").html(row['name']);
         $("#txtModifyCourseName").val(row['name']);
         if (row['isActive'] == 'true') {
             $("#chkModifyCourseIsActive").prop("checked", true).checkboxradio("refresh");
@@ -227,4 +235,8 @@ function loadModifyGradePage() {
 
     var options = [gradeId];
     Grade.select(options, successSelectOne);
+}
+
+function loadAddGradePage() {
+
 }

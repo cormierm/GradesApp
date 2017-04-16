@@ -30,6 +30,10 @@ function btnModifyCourseDelete_click() {
     deleteCourse();
 }
 
+function btnModifyCourseEdit_click() {
+    $("#frmModifyCourse").prop("hidden", false);
+}
+
 function btnModifyProgUpdate_click() {
     if(doValidate_frmModifyProg()){
         updateProgram();
@@ -52,7 +56,7 @@ function btnModifyGradeDelete_click() {
 }
 
 function pageAddGrade_pageshow() {
-    populateSelectListCourses($("#selAddGradeCourses"));
+    populateSelectListCourses($("#selAddGradeCourses"), localStorage.getItem("selectedCourseId"));
 }
 
 function pageAddCourse_pageshow() {
@@ -79,10 +83,10 @@ function init() {
     $("#btnAddProgAdd").on("click", btnAddProgAdd_click);
     $("#btnAddCourseAdd").on("click", btnAddCourseAdd_click);
     $("#btnAddGradeAdd").on("click", btnAddGradeAdd_click);
-    $("#btn").on("click", testClass);
 
     $("#btnModifyCourseUpdate").on("click", btnModifyCourseUpdate_click);
     $("#btnModifyCourseDelete").on("click", btnModifyCourseDelete_click);
+    $("#btnModifyCourseEdit").on("click", btnModifyCourseEdit_click);
 
     $("#btnModifyProgUpdate").on("click", btnModifyProgUpdate_click);
     $("#btnModifyProgDelete").on("click", btnModifyProgDelete_click);

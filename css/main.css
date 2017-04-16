@@ -21,3 +21,29 @@ textarea.error {
     padding: 0;
     margin: 0;
 }
+#lstGrades a {
+    color: black;
+    text-decoration: none;
+}
+
+#lstGrades ul {
+    list-style-type: none;
+    padding: 0;
+    maring: 0;
+}
+#lstGrades ul li {
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: #c4d7dd;
+    margin: 2px;
+    padding: 5px;
+}
+
+#lstGrades ul li a {
+    text-decoration: none;
+}
+
+#courseGradeList {
+    margin-bottom: 10px;
+}

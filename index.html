@@ -14,7 +14,6 @@
     <script src="js/database.js"></script>
     <script src="js/gradesDAL.js"></script>
     <script src="js/util.js"></script>
-    <script src="js/programs.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -203,17 +202,24 @@
     <!-- Modify Course Page -->
     <div id="pageModifyCourse" data-role="page">
         <header data-role="header" data-theme="b" data-position="fixed">
-            <h1> Modify Course Page </h1>
+            <h1> Course Page </h1>
             <div data-role="navbar">
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                    <li><a href="#pageGrades" data-icon="grid" class="ui-btn-active ui-state-persist">Grades</a></li>
+                    <li><a href="#pageAdd" data-icon="plus">Add</a></li>
                 </ul>
             </div>
         </header>
         <section data-role="content">
-            <h2>Modify Course</h2>
+            <h3>
+                <div id="headerModifyCourseName">Not Initialized</div>
+            </h3>
+            <ul id="courseGradeList" data-role="listview" data-type="horizontal"></ul>
+            <a href="#pageAddGrade" data-role="button" data-icon="plus" data-inline="true"
+               data-iconpos="left">Add Grade</a>
+            <button data-role="button" data-icon="gear" data-inline="true"
+               data-iconpos="left" id="btnModifyCourseEdit" name="btnModifyCourseEdit">Edit Course</button>
             <form id="frmModifyCourse">
                 <label for="selModifyCoursePrograms">Program:</label>
                 <select name="selModifyCoursePrograms" id="selModifyCoursePrograms">
@@ -223,9 +229,13 @@
                 <input type="text" name="txtModifyCourseName" id="txtModifyCourseName">
                 <input type="checkbox" id="chkModifyCourseIsActive" name="chkModifyCourseIsActive" data-role="checkbox" checked>
                 <label for="chkModifyCourseIsActive">Is Active?</label>
-                <input type="submit" data-role="button" id="btnModifyCourseUpdate" name="btnModifyCourseUpdate" value="Update Course">
-                <a href="#pageAdd"><input type="button" id="btnModifyCourseDelete" name="btnModifyCourseDelete" data-role="button" value="Delete"></a>
-                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <input type="submit" data-role="button" id="btnModifyCourseUpdate" name="btnModifyCourseUpdate"
+                           data-inline=true value="Update">
+                    <input type="button" id="btnModifyCourseDelete" name="btnModifyCourseDelete" data-role="button"
+                                              data-inline=true value="Delete">
+                    <input type="button" data-role="button" data-inline=true value="Cancel">
+                </fieldset>
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
@@ -239,8 +249,8 @@
             <div data-role="navbar">
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                    <li><a href="#pageGrades" data-icon="grid" class="ui-btn-active ui-state-persist">Grades</a></li>
+                    <li><a href="#pageAdd" data-icon="plus">Add</a></li>
                 </ul>
             </div>
         </header>
@@ -258,8 +268,8 @@
                 <label for="txtModifyGradeGrade">Grade:</label>
                 <input type="text" name="txtModifyGradeGrade" id="txtModifyGradeGrade">
                 <input type="submit" data-role="button" id="btnModifyGradeUpdate" name="btnModifyGradeUpdate" value="Update Grade">
-                <a href="#pageAdd"><input type="button" id="btnModifyGradeDelete" name="btnModifyGradeDelete" data-role="button" value="Delete"></a>
-                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+                <a href="#pageModifyCourse"><input type="button" id="btnModifyGradeDelete" name="btnModifyGradeDelete" data-role="button" value="Delete"></a>
+                <a href="#pageModifyCourse"><input type="button" data-role="button" value="Cancel"></a>
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
