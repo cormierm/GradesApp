@@ -214,6 +214,7 @@ function populateSelectListCourses(selectList, courseId) {
 function loadModifyCoursePage() {
     $("#frmModifyCourse").prop("hidden", true);
     var courseId = localStorage.getItem("selectedCourseId");
+
     generateGradeHtmlByCourseId(courseId);
     function successSelectOne(tx, results) {
         var row = results.rows[0];
@@ -256,9 +257,38 @@ function loadModifyGradePage() {
         $("#txtModifyGradeName").val(row['name']);
         $("#txtModifyGradeWeight").val(row['weight']);
         $("#txtModifyGradeGrade").val(row['grade']);
+        calculateSumOfWeightsForModifyGrade();
         populateSelectListCourses($("#selModifyGradeCourses"), row['courseId']);
     }
 
     var options = [gradeId];
     GradeDB.select(options, successSelectOne);
+}
+
+function calculateSumOfWeightsForAddGrade() {
+    var courseId = localStorage.getItem("selectedCourseId");
+    function successSelectAll(tx, results){
+        var sumOfWeights = 0;
+        for (var i=0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            sumOfWeights += row['weight'];
+        }
+        localStorage.setItem("sumOfWeights", sumOfWeights);
+    }
+    var options = [courseId];
+    GradeDB.selectAllByCourse(successSelectAll, options);
+}
+
+function calculateSumOfWeightsForModifyGrade() {
+    var courseId = localStorage.getItem("selectedCourseId");
+    function successSelectAll(tx, results){
+        var sumOfWeights = 0 - $("#txtModifyGradeWeight").val();
+        for (var i=0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            sumOfWeights += row['weight'];
+        }
+        localStorage.setItem("sumOfWeights", sumOfWeights);
+    }
+    var options = [courseId];
+    GradeDB.selectAllByCourse(successSelectAll, options);
 }

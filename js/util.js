@@ -84,7 +84,8 @@ function doValidate_frmAddGrade() {
             txtAddGradeWeight: {
                 required: true,
                 min: 0,
-                max: 100
+                max: 100,
+                weightcheck: true
             },
             txtAddGradeGrade: {
                 required: true,
@@ -180,7 +181,8 @@ function doValidate_frmModifyGrade() {
             txtModifyGradeWeight: {
                 required: true,
                 min: 0,
-                max: 100
+                max: 100,
+                weightcheck: true
             },
             txtModifyGradeGrade: {
                 required: true,
@@ -211,3 +213,11 @@ function doValidate_frmModifyGrade() {
     });
     return form.valid();
 }
+
+jQuery.validator.addMethod("weightcheck",
+    function (value, element) {
+        var sumOfWeights = parseFloat(localStorage.getItem("sumOfWeights"));
+        value = parseFloat(value);
+        return this.optional(element) || (value + sumOfWeights) <= 100;
+    },
+    "Total Weight for course cannot exceed 100.");

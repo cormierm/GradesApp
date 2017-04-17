@@ -75,6 +75,7 @@ function btnModifyGradeDelete_click() {
 }
 
 function pageAddGrade_pageshow() {
+    calculateSumOfWeightsForAddGrade();
     populateSelectListCourses($("#selAddGradeCourses"), localStorage.getItem("selectedCourseId"));
 }
 
