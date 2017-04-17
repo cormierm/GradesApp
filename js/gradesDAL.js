@@ -193,17 +193,22 @@ var CalculateDB = {
         function txFunction(tx) {
             var sql = "" +
                 "SELECT p.name AS pname, c.name AS cname, " +
-                "g.name AS gname, ((weight / 100) * grade) AS sumGrade " +
+                "g.name AS gname, SUM(CAST(weight AS DOUBLE) / 100 * grade) / (SUM(CAST(weight AS DOUBLE)) / 100) AS sumGrade," +
+                "COUNT(p.id) AS count " +
                 "FROM program p " +
                 "JOIN course c ON p.id = c.programId " +
                 "JOIN grade g ON c.id = g.courseId " +
-                "GROUP BY c.id;";
+                "GROUP BY p.name AND c.id;";
             var options = [];
             function successSelectAll(tx, results) {
+                var totalGrades = 0;
+                var count = results.rows.length;
                 for (var i=0; i < results.rows.length; i++) {
                     var row = results.rows[i];
-                    console.info(row['pname'] + " : " + row['cname'] + " : " + row['gname'] + " : " + row['sumGrade']);
+                    console.info(row['pname'] + " : " + row['cname'] + " : " + row['count'] + " : " + row['sumGrade']);
+                    totalGrades += row['sumGrade'];
                 }
+                console.info(totalGrades / count);
             }
             tx.executeSql(sql, options, successSelectAll, errorHandler);
         }
