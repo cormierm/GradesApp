@@ -100,7 +100,6 @@ function pageModifyGrade_pageshow() {
 
 function pageHome_pageshow() {
 
-    calculateTotalGradeAverage($("#calculatedTotalGrade"));
 }
 
 function init() {
