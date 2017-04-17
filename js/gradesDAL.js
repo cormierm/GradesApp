@@ -198,7 +198,7 @@ var CalculateDB = {
                 "FROM program p " +
                 "JOIN course c ON p.id = c.programId " +
                 "JOIN grade g ON c.id = g.courseId " +
-                "GROUP BY p.name AND c.id;";
+                "GROUP BY c.id;";
             var options = [];
             function successSelectAll(tx, results) {
                 var totalGrades = 0;
@@ -207,8 +207,9 @@ var CalculateDB = {
                     var row = results.rows[i];
                     console.info(row['pname'] + " : " + row['cname'] + " : " + row['count'] + " : " + row['sumGrade']);
                     totalGrades += row['sumGrade'];
+
                 }
-                console.info(totalGrades / count);
+                $("#calculatedTotalGrade").html(totalGrades / count);
             }
             tx.executeSql(sql, options, successSelectAll, errorHandler);
         }
