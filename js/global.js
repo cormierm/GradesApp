@@ -99,10 +99,12 @@ function pageModifyGrade_pageshow() {
 }
 
 function pageHome_pageshow() {
-
+    CalculateDB.selectAll();
 }
 
 function init() {
+    CalculateDB.selectAll();
+
     $("#btnAddProgAdd").on("click", btnAddProgAdd_click);
     $("#btnAddCourseAdd").on("click", btnAddCourseAdd_click);
     $("#btnAddGradeAdd").on("click", btnAddGradeAdd_click);
@@ -157,6 +159,6 @@ function initDB() {
 }
 
 $(document).ready(function () {
-    init();
     initDB();
+    init();
 });
