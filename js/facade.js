@@ -246,7 +246,7 @@ function loadModifyProgramPage() {
     }
 
     var options = [programId];
-    Program.select(options, successSelectOne);
+    ProgramDB.select(options, successSelectOne);
 }
 
 function loadModifyGradePage() {
