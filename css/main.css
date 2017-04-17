@@ -29,7 +29,7 @@ textarea.error {
 #lstGrades ul {
     list-style-type: none;
     padding: 0;
-    maring: 0;
+    margin: 0;
 }
 #lstGrades ul li {
     text-decoration: none;
@@ -46,4 +46,19 @@ textarea.error {
 
 #courseGradeList {
     margin-bottom: 10px;
+}
+
+#gradeAverageTitle {
+    font-size: 30vw;
+    text-align: center;
+}
+
+#homePageTitle {
+    font-size: 8vw;
+    text-align: center;
+}
+
+#subTitleGrade {
+    font-size: 4vw;
+    text-align: center;
 }
