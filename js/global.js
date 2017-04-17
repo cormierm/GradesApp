@@ -135,14 +135,6 @@ function init() {
     if(localStorage.getItem("showIsActiveOnly") === null){
         localStorage.setItem("showIsActiveOnly", false);
     }
-
-    $("#btnTest").on("click", btnTest_click);
-}
-
-function btnTest_click() {
-
-    console.info("test");
-    CalculateDB.selectAll();
 }
 
 function initDB() {
