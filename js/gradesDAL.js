@@ -4,7 +4,7 @@
  * Created On: April 11, 2017
  */
 
-var Program = {
+var ProgramDB = {
     selectAll: function (successSelectAll) {
         function txFunction(tx) {
             var sql = "SELECT * FROM program;";
@@ -61,7 +61,7 @@ var Program = {
     }
 }
 
-var Course = {
+var CourseDB = {
     selectAll: function (successSelectAll) {
         function txFunction(tx) {
             var sql = "SELECT * FROM course;";
@@ -128,7 +128,7 @@ var Course = {
 
 }
 
-var Grade = {
+var GradeDB = {
     selectAll: function (successSelectAll) {
         function txFunction(tx) {
             var sql = "SELECT * FROM grade;";
@@ -183,6 +183,21 @@ var Grade = {
                 alert ("Grade deleted successfully");
             }
             tx.executeSql(sql, options, successDelete, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    }
+}
+
+var Calculate = {
+    selectAll: function () {
+        function txFunction(tx) {
+            var sql = "SELECT ";
+
+            function sucessSelectAll() {
+
+            }
+
+            tx.executeSql(txFunction, options, sucessSelectAll, errorHandler);
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     }

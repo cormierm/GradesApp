@@ -18,7 +18,7 @@ function calculateGrade(courseId, returnSelector, returnSumSelector){
         $("#" + returnSumSelector).html(totalGrades);
     }
     var options = [courseId];
-    Grade.selectAllByCourse(successSelectAllCoursesByCourseId, options);
+    GradeDB.selectAllByCourse(successSelectAllCoursesByCourseId, options);
 }
 
 var arrayGrades = [];
@@ -45,20 +45,21 @@ function calculateTotalGradeAverage(returnSelector){
                         }
                         var totalAverageGrade = totalGrades / (totalWeights / 100);
                         arrayGrades.push(totalAverageGrade);
+                        console.info(arrayGrades);
 
                     }
                     var options = [row['id']];
-                    Grade.selectAllByCourse(successSelectAllGrades, options);
+                    GradeDB.selectAllByCourse(successSelectAllGrades, options);
 
                 }
             }
             var options = [row['id']];
-            Course.selectAllByProgram(successSelectAllCourse, options);
+            CourseDB.selectAllByProgram(successSelectAllCourse, options);
 
         }
         returnSelector.html(html);
     }
-    Program.selectAll(successSelectAll);
+    ProgramDB.selectAll(successSelectAll);
 }
 
 function doValidate_frmAddProg() {

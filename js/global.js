@@ -131,9 +131,16 @@ function init() {
     $("#pageModifyGrade").on("pageshow", pageModifyGrade_pageshow);
     $("#pageHome").on("pageshow", pageHome_pageshow);
 
-    if(localStorage.getItem("showIsActiveOnly") == null){
+    if(localStorage.getItem("showIsActiveOnly") === null){
         localStorage.setItem("showIsActiveOnly", false);
     }
+
+    $("#btnTest").on("click", btnTest_click);
+}
+
+function btnTest_click() {
+
+    console.info("test");
 }
 
 function initDB() {

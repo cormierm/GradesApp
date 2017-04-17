@@ -7,7 +7,7 @@ function addProgram() {
     var name = $("#txtAddProgName").val();
     var isActive = $("#chkAddProgIsActive").prop("checked");
     var options = [name, isActive];
-    Program.insert(options);
+    ProgramDB.insert(options);
     $(location).prop('href', "#pageGrades");
 }
 
@@ -16,14 +16,14 @@ function updateProgram() {
     var programName = $("#txtModifyProgName").val();
     var isActive = $("#chkModifyProgIsActive").prop("checked");
     var options = [programName, isActive, programId];
-    Program.update(options);
+    ProgramDB.update(options);
     $(location).prop('href', "#pageGrades");
 }
 
 function deleteProgram() {
     var programId = localStorage.getItem("selectedProgramId");
     var options = [programId];
-    Program.delete(options);
+    ProgramDB.delete(options);
     $(location).prop('href', "#pageGrades");
 }
 function addCourse() {
@@ -31,7 +31,7 @@ function addCourse() {
     var name = $("#txtAddCourseName").val();
     var isActive = $("#chkAddCourseIsActive").prop("checked");
     var options = [programId, name, isActive];
-    Course.insert(options);
+    CourseDB.insert(options);
     $(location).prop('href', "#pageGrades");
 }
 
@@ -41,14 +41,14 @@ function updateCourse() {
     var courseName = $("#txtModifyCourseName").val();
     var isActive = $("#chkModifyCourseIsActive").prop("checked");
     var options = [programId, courseName, isActive, courseId];
-    Course.update(options);
+    CourseDB.update(options);
     $(location).prop('href', "#pageModifyCourse");
 }
 
 function deleteCourse() {
     var courseId = localStorage.getItem("selectedCourseId");
     var options = [courseId];
-    Course.delete(options);
+    CourseDB.delete(options);
     $(location).prop('href', "#pageGrades");
 }
 
@@ -59,14 +59,14 @@ function updateGrade() {
     var weight = $("#txtModifyGradeWeight").val();
     var grade = $("#txtModifyGradeGrade").val();
     var options = [courseId, gradeName, weight, grade, gradeId];
-    Grade.update(options);
+    GradeDB.update(options);
     $(location).prop('href', "#pageModifyCourse");
 }
 
 function deleteGrade() {
     var gradeId = localStorage.getItem("selectedGradeId");
     var options = [gradeId];
-    Grade.delete(options);
+    GradeDB.delete(options);
     $(location).prop('href', "#pageModifyCourse");
 }
 
@@ -76,7 +76,7 @@ function addGrade() {
     var weight = $("#txtAddGradeWeight").val();
     var grade = $("#txtAddGradeGrade").val();
     var options = [courseId, name, weight, grade];
-    Grade.insert(options);
+    GradeDB.insert(options);
     $(location).prop('href', "#pageModifyCourse");
 }
 
@@ -96,7 +96,7 @@ function generateGradesList() {
             generateCourseHtmlByProgramId(row['name'],row['id']);
         }
     }
-    Program.selectAll(successSelectAll);
+    ProgramDB.selectAll(successSelectAll);
 }
 
 function generateCourseHtmlByProgramId(programName, programId){
@@ -141,7 +141,7 @@ function generateCourseHtmlByProgramId(programName, programId){
         $(".btnGradesEditProgram").on("click", clickProgramHandler);
     }
     var options = [programId];
-    Course.selectAllByProgram(successSelectAllCoursesByProgramId, options);
+    CourseDB.selectAllByProgram(successSelectAllCoursesByProgramId, options);
 }
 
 function generateGradeHtmlByCourseId(courseId){
@@ -168,7 +168,7 @@ function generateGradeHtmlByCourseId(courseId){
 
     }
     var options = [courseId];
-    Grade.selectAllByCourse(successSelectAllCoursesByCourseId, options);
+    GradeDB.selectAllByCourse(successSelectAllCoursesByCourseId, options);
 }
 
 function populateSelectListPrograms(selectList, programId) {
@@ -188,7 +188,7 @@ function populateSelectListPrograms(selectList, programId) {
         selectList.html(htmlCode);
         selectList.selectmenu('refresh');
     }
-    Program.selectAll(successSelectAll);
+    ProgramDB.selectAll(successSelectAll);
 }
 
 function populateSelectListCourses(selectList, courseId) {
@@ -208,7 +208,7 @@ function populateSelectListCourses(selectList, courseId) {
         selectList.html(htmlCode);
         selectList.selectmenu('refresh');
     }
-    Course.selectAll(successSelectAll);
+    CourseDB.selectAll(successSelectAll);
 }
 
 function loadModifyCoursePage() {
@@ -229,7 +229,7 @@ function loadModifyCoursePage() {
     }
 
     var options = [courseId];
-    Course.select(options, successSelectOne);
+    CourseDB.select(options, successSelectOne);
 }
 
 function loadModifyProgramPage() {
@@ -260,9 +260,5 @@ function loadModifyGradePage() {
     }
 
     var options = [gradeId];
-    Grade.select(options, successSelectOne);
-}
-
-function loadAddGradePage() {
-
+    GradeDB.select(options, successSelectOne);
 }
