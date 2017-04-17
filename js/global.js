@@ -98,6 +98,11 @@ function pageModifyGrade_pageshow() {
     loadModifyGradePage();
 }
 
+function pageHome_pageshow() {
+
+    calculateTotalGradeAverage($("#calculatedTotalGrade"));
+}
+
 function init() {
     $("#btnAddProgAdd").on("click", btnAddProgAdd_click);
     $("#btnAddCourseAdd").on("click", btnAddCourseAdd_click);
@@ -124,6 +129,7 @@ function init() {
     $("#pageModifyCourse").on("pageshow", pageModifyCourse_pageshow);
     $("#pageModifyProgram").on("pageshow", pageModifyProgram_pageshow);
     $("#pageModifyGrade").on("pageshow", pageModifyGrade_pageshow);
+    $("#pageHome").on("pageshow", pageHome_pageshow);
 
     if(localStorage.getItem("showIsActiveOnly") == null){
         localStorage.setItem("showIsActiveOnly", false);

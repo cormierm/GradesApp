@@ -1,5 +1,5 @@
 /**
- * File: MCdatabase.js
+ * File: database.js
  * Author: Matt Cormier & Margo Tavares
  * Created On: April 11, 2017
  */
