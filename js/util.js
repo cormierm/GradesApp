@@ -21,47 +21,6 @@ function calculateGrade(courseId, returnSelector, returnSumSelector){
     GradeDB.selectAllByCourse(successSelectAllCoursesByCourseId, options);
 }
 
-var arrayGrades = [];
-
-function calculateTotalGradeAverage(returnSelector){
-    function successSelectAll(tx, results) {
-        var html = "";
-        for (var i = 0; i < results.rows.length; i++) {
-            var row = results.rows[i];
-            html += "<p id='idProgramGrade'" + row['id'] + ">" + row['name'] + "</p>";
-
-            function successSelectAllCourse(tx, results) {
-                var htmlCourse = "";
-                for (var j = 0; j < results.rows.length; j++) {
-                    var row = results.rows[j];
-
-                    function successSelectAllGrades(tx, results) {
-                        var totalGrades = 0;
-                        var totalWeights = 0;
-                        for (var i=0; i < results.rows.length; i++) {
-                            var row = results.rows[i];
-                            totalGrades += (row['weight'] / 100) * row['grade'];
-                            totalWeights += row['weight'];
-                        }
-                        var totalAverageGrade = totalGrades / (totalWeights / 100);
-                        arrayGrades.push(totalAverageGrade);
-                        console.info(arrayGrades);
-
-                    }
-                    var options = [row['id']];
-                    GradeDB.selectAllByCourse(successSelectAllGrades, options);
-
-                }
-            }
-            var options = [row['id']];
-            CourseDB.selectAllByProgram(successSelectAllCourse, options);
-
-        }
-        returnSelector.html(html);
-    }
-    ProgramDB.selectAll(successSelectAll);
-}
-
 function doValidate_frmAddProg() {
     var form = $("#frmAddProg");
     form.validate({

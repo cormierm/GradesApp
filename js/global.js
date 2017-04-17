@@ -141,6 +141,7 @@ function init() {
 function btnTest_click() {
 
     console.info("test");
+    CalculateDB.selectAll();
 }
 
 function initDB() {

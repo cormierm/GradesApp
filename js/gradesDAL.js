@@ -188,16 +188,23 @@ var GradeDB = {
     }
 }
 
-var Calculate = {
-    selectAll: function () {
+var CalculateDB = {
+    selectAll: function() {
         function txFunction(tx) {
-            var sql = "SELECT ";
-
-            function sucessSelectAll() {
-
+            var sql = "" +
+                "SELECT p.name AS pname, c.name AS cname, " +
+                "g.name AS gname, grade " +
+                "FROM program p " +
+                "JOIN course c ON p.id = c.programId " +
+                "JOIN grade g ON c.id = g.courseId;";
+            var options = [];
+            function successSelectAll(tx, results) {
+                for (var i=0; i < results.rows.length; i++) {
+                    var row = results.rows[i];
+                    console.info(row['pname'] + " : " + row['cname'] + " : " + row['gname'] + " : " + row['grade']);
+                }
             }
-
-            tx.executeSql(txFunction, options, sucessSelectAll, errorHandler);
+            tx.executeSql(sql, options, successSelectAll, errorHandler);
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     }
