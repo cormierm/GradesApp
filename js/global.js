@@ -1,5 +1,7 @@
 /**
- * Created by mcormier4319 on 4/11/2017.
+ * File: global.js
+ * Author: Matt Cormier & Margo Tavares
+ * Created On: April 11, 2017
  */
 
 function btnAddProgAdd_click() {
@@ -20,6 +22,15 @@ function btnAddGradeAdd_click() {
     }
 }
 
+function btnGradesAddNewProgram_click() {
+    $(location).prop('href', "#pageAddProgram");
+}
+function chkGradesShowActive_change() {
+    localStorage.setItem("showIsActiveOnly", $("#chkGradesShowActive").prop("checked"));
+    location.reload();
+}
+
+
 function btnModifyCourseUpdate_click() {
     if(doValidate_frmModifyCourse()){
         updateCourse();
@@ -30,8 +41,16 @@ function btnModifyCourseDelete_click() {
     deleteCourse();
 }
 
+function btnModifyCourseAddGrade_click() {
+    $(location).prop('href', "#pageAddGrade");
+}
+
 function btnModifyCourseEdit_click() {
     $("#frmModifyCourse").prop("hidden", false);
+}
+
+function btnModifyCourseCancel_click() {
+    $("#frmModifyCourse").prop("hidden", true);
 }
 
 function btnModifyProgUpdate_click() {
@@ -60,7 +79,7 @@ function pageAddGrade_pageshow() {
 }
 
 function pageAddCourse_pageshow() {
-    populateSelectListPrograms($("#selAddCoursePrograms"));
+    populateSelectListPrograms($("#selAddCoursePrograms"), localStorage.getItem("selectedProgramId"));
 }
 
 function pageGrades_pageshow() {
@@ -84,9 +103,14 @@ function init() {
     $("#btnAddCourseAdd").on("click", btnAddCourseAdd_click);
     $("#btnAddGradeAdd").on("click", btnAddGradeAdd_click);
 
+    $("#btnGradesAddNewProgram").on("click", btnGradesAddNewProgram_click);
+    $("#chkGradesShowActive").on("change", chkGradesShowActive_change);
+
     $("#btnModifyCourseUpdate").on("click", btnModifyCourseUpdate_click);
     $("#btnModifyCourseDelete").on("click", btnModifyCourseDelete_click);
+    $("#btnModifyCourseAddGrade").on("click", btnModifyCourseAddGrade_click);
     $("#btnModifyCourseEdit").on("click", btnModifyCourseEdit_click);
+    $("#btnModifyCourseCancel").on("click", btnModifyCourseCancel_click);
 
     $("#btnModifyProgUpdate").on("click", btnModifyProgUpdate_click);
     $("#btnModifyProgDelete").on("click", btnModifyProgDelete_click);
@@ -100,6 +124,10 @@ function init() {
     $("#pageModifyCourse").on("pageshow", pageModifyCourse_pageshow);
     $("#pageModifyProgram").on("pageshow", pageModifyProgram_pageshow);
     $("#pageModifyGrade").on("pageshow", pageModifyGrade_pageshow);
+
+    if(localStorage.getItem("showIsActiveOnly") == null){
+        localStorage.setItem("showIsActiveOnly", false);
+    }
 }
 
 function initDB() {

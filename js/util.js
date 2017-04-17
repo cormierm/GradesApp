@@ -1,5 +1,5 @@
 /**
- * File: gradesDAL.js
+ * File: util.js
  * Author: Matt Cormier & Margo Tavares
  * Created On: April 14, 2017
  */

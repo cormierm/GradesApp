@@ -1,11 +1,14 @@
 /**
- * Created by mcormier4319 on 4/11/2017.
+ * File: facade.js
+ * Author: Matt Cormier & Margo Tavares
+ * Created On: April 11, 2017
  */
 function addProgram() {
     var name = $("#txtAddProgName").val();
     var isActive = $("#chkAddProgIsActive").prop("checked");
     var options = [name, isActive];
     Program.insert(options);
+    $(location).prop('href', "#pageGrades");
 }
 
 function updateProgram() {
@@ -14,6 +17,7 @@ function updateProgram() {
     var isActive = $("#chkModifyProgIsActive").prop("checked");
     var options = [programName, isActive, programId];
     Program.update(options);
+    $(location).prop('href', "#pageGrades");
 }
 
 function deleteProgram() {
@@ -28,6 +32,7 @@ function addCourse() {
     var isActive = $("#chkAddCourseIsActive").prop("checked");
     var options = [programId, name, isActive];
     Course.insert(options);
+    $(location).prop('href', "#pageGrades");
 }
 
 function updateCourse() {
@@ -55,13 +60,14 @@ function updateGrade() {
     var grade = $("#txtModifyGradeGrade").val();
     var options = [courseId, gradeName, weight, grade, gradeId];
     Grade.update(options);
+    $(location).prop('href', "#pageModifyCourse");
 }
 
 function deleteGrade() {
     var gradeId = localStorage.getItem("selectedGradeId");
     var options = [gradeId];
     Grade.delete(options);
-    $(location).prop('href', "#pageGrades");
+    $(location).prop('href', "#pageModifyCourse");
 }
 
 function addGrade() {
@@ -71,9 +77,18 @@ function addGrade() {
     var grade = $("#txtAddGradeGrade").val();
     var options = [courseId, name, weight, grade];
     Grade.insert(options);
+    $(location).prop('href', "#pageModifyCourse");
 }
 
 function generateGradesList() {
+    var chkbox = $("#chkGradesShowActive");
+    if (localStorage.getItem("showIsActiveOnly") == 'true'){
+        chkbox.prop("checked", true);
+    }
+    else {
+        chkbox.prop("checked", false);
+    }
+    chkbox.checkboxradio("refresh");
     $("#lstGrades").html("");
     function successSelectAll(tx, results) {
         for (var i=0; i < results.rows.length; i++) {
@@ -95,11 +110,18 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "<h3>" + row['name'] + "</h3>" +
                 "<p></p><span class='spanGrade'>Total Average: <span id='spanCalculatedGrade"+ row['id'] + "'></span>% " +
                 "Sum of Grades: <span id='spanCalculatedSumGrade"+ row['id'] + "'></span>%</span></p>" +
-                //"<div id='courseId" + row['id'] + "'></div>" +
                 "</li></a>";
             calculateGrade(row['id'], "spanCalculatedGrade" + row['id'], "spanCalculatedSumGrade" + row['id']);
-            // generateGradeHtmlByCourseId(row['id']);
         }
+        courseHtmlCode += "</ul>" +
+            "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId +
+            " data-iconpos='left' class='btnGradesAddCourse'>Add Course</button>" +
+            "<button data-role='button' data-icon='gear' data-inline='true' data-row-id=" + programId +
+            " data-iconpos='left' class='btnGradesEditProgram'>Edit Program</button>";
+
+        var listGrades = $("#lstGrades");
+        listGrades.html(listGrades.html() + courseHtmlCode);
+
         function clickCourseHandler() {
             localStorage.setItem("selectedCourseId", $(this).attr("data-row-id"));
             $(location).prop('href', "#pageModifyCourse");
@@ -108,11 +130,15 @@ function generateCourseHtmlByProgramId(programName, programId){
             localStorage.setItem("selectedProgramId", $(this).attr("data-row-id"));
             $(location).prop('href', "#pageModifyProgram");
         }
-        courseHtmlCode += "</ul>";
-        var listGrades = $("#lstGrades");
-        listGrades.html(listGrades.html() + courseHtmlCode);
+        function btnGradesAddCourse_click() {
+            localStorage.setItem("selectedProgramId", $(this).attr("data-row-id"));
+            $(location).prop('href', "#pageAddCourse");
+        }
+
         $(".courseListItem").on("click", clickCourseHandler);
         $(".programListItem").on("click", clickProgramHandler);
+        $(".btnGradesAddCourse").on("click", btnGradesAddCourse_click);
+        $(".btnGradesEditProgram").on("click", clickProgramHandler);
     }
     var options = [programId];
     Course.selectAllByProgram(successSelectAllCoursesByProgramId, options);
