@@ -29,15 +29,15 @@
                 <ul>
                     <li><a href="#pageHome" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user">Profile</a></li>
                 </ul>
             </div>
         </header>
         <section data-role="content">
-            <h1>Matt and Margo's Grades App</h1>
-            <button data-role="button" id="btnTest" name="btnTest">Test</button>
-            <div id="calculatedTotalGrade">Not Init</div>
-            <p align="center" id="pHomeGrade">88%</p>
+            <h1 id="homePageTitle">Matt and Margo's Grades App</h1>
+            <h4 id="subTitleGrade">Your current grade average:</h4>
+            <div id="gradeAverageTitle"><span id="calculatedTotalGrade">Not Init</span>%</div>
+            <button id="btnHomeGrades" data-role="button" data-icon="bullets">Grades Listing</button>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
@@ -52,7 +52,7 @@
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid" class="ui-btn-active ui-state-persist">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user">Profile</a></li>
                 </ul>
             </div>
         </header>
@@ -69,24 +69,23 @@
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
-    <!-- Add Page -->
-    <div id="pageAdd" data-role="page">
+    <!-- Profile Page -->
+    <div id="pageProfile" data-role="page">
         <header data-role="header" data-theme="b" data-position="fixed">
             <a href="./" class="ui-btn ui-corner-all ui-btn-inline ui-mini footer-button-left ui-btn-icon-left ui-icon-back">Back</a>
-            <h1> Add Page </h1>
+            <h1> Profile </h1>
             <div data-role="navbar">
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a></li>
                 </ul>
             </div>
         </header>
         <section data-role="content">
-            <h2>Add Page</h2>
-            <a href="#pageAddProgram" data-role="button" data-icon="plus" data-iconpos="left">Add Program</a>
-            <a href="#pageAddCourse" data-role="button" data-icon="plus" data-iconpos="left">Add Course</a>
-            <a href="#pageAddGrade" data-role="button" data-icon="plus" data-iconpos="left">Add Grade</a>
+            <h2>Your Profile</h2>
+            <label for="txtProfileGoal">Target Grade</label>
+            <input type="text" id="txtProfileGoal" name="txtProfileGoal">
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
@@ -101,7 +100,7 @@
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a></li>
                 </ul>
             </div>
         </header>
@@ -113,7 +112,7 @@
                 <input type="checkbox" id="chkAddProgIsActive" name="chkAddProgIsActive" data-role="checkbox" checked>
                 <label for="chkAddProgIsActive">Is Active?</label>
                 <input type="submit" data-role="button" id="btnAddProgAdd" name="btnAddProgAdd" value="Add Program">
-                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+                <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
@@ -129,7 +128,7 @@
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a></li>
                 </ul>
             </div>
         </header>
@@ -145,7 +144,7 @@
                 <input type="checkbox" id="chkAddCourseIsActive" name="chkAddCourseIsActive" data-role="checkbox" checked>
                 <label for="chkAddCourseIsActive">Is Active?</label>
                 <input type="submit" data-role="button" id="btnAddCourseAdd" name="btnAddCourseAdd" value="Add Course">
-                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+                <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
@@ -161,7 +160,7 @@
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a></li>
                 </ul>
             </div>
         </header>
@@ -179,7 +178,7 @@
                 <label for="txtAddGradeGrade">Grade:</label>
                 <input type="text" name="txtAddGradeGrade" id="txtAddGradeGrade">
                 <input type="submit" data-role="button" id="btnAddGradeAdd" name="btnAddGradeAdd" value="Add Grade">
-                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+                <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
@@ -195,7 +194,7 @@
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus" class="ui-btn-active ui-state-persist">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a></li>
                 </ul>
             </div>
         </header>
@@ -207,8 +206,8 @@
                 <input type="checkbox" id="chkModifyProgIsActive" name="chkModifyProgIsActive" data-role="checkbox" checked>
                 <label for="chkModifyProgIsActive">Is Active?</label>
                 <input type="submit" data-role="button" id="btnModifyProgUpdate" name="btnModifyProgUpdate" value="Update Program">
-                <a href="#pageAdd"><input type="button" id="btnModifyProgDelete" name="btnModifyProgDelete" data-role="button" value="Delete"></a>
-                <a href="#pageAdd"><input type="button" data-role="button" value="Cancel"></a>
+                <button id="btnModifyProgDelete" name="btnModifyProgDelete" data-role="button">Delete</button>
+                <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
@@ -224,13 +223,13 @@
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid" class="ui-btn-active ui-state-persist">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user">Profile</a></li>
                 </ul>
             </div>
         </header>
         <section data-role="content">
             <h3>
-                <div id="headerModifyCourseName">Not Initialized</div>
+                <span id="headerModifyCourseName">Not Initialized</span>
             </h3>
             <ul id="courseGradeList" data-role="listview" data-type="horizontal"></ul>
             <button data-role="button" data-icon="plus" data-inline="true"
@@ -269,7 +268,7 @@
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid" class="ui-btn-active ui-state-persist">Grades</a></li>
-                    <li><a href="#pageAdd" data-icon="plus">Add</a></li>
+                    <li><a href="#pageProfile" data-icon="user">Profile</a></li>
                 </ul>
             </div>
         </header>
