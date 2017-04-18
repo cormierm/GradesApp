@@ -23,6 +23,15 @@ function updateProgram() {
 function deleteProgram() {
     var programId = localStorage.getItem("selectedProgramId");
     var options = [programId];
+    function success(tx, results) {
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            var options = [row['id']];
+            GradeDB.deleteAllByCourseId(options);
+        }
+    }
+    CourseDB.selectAllByProgram(success, options);
+    CourseDB.deleteAllByProgramId(options);
     ProgramDB.delete(options);
     $(location).prop('href', "#pageGrades");
 }
@@ -48,6 +57,7 @@ function updateCourse() {
 function deleteCourse() {
     var courseId = localStorage.getItem("selectedCourseId");
     var options = [courseId];
+    GradeDB.deleteAllByCourseId(options);
     CourseDB.delete(options);
     $(location).prop('href', "#pageGrades");
 }
