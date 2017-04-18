@@ -46,7 +46,7 @@ var DB = {
                 "programId INTEGER NOT NULL," +
                 "name VARCHAR(20) NOT NULL," +
                 "isActive VARCHAR(1) DEFAULT true," +
-                "FOREIGN KEY(programId) REFERENCES program(id));";
+                "FOREIGN KEY(programId) REFERENCES program(id) ON DELETE CASCADE);";
             function successCreateCourseTable() {
                 console.info("SQL Success: Table course creation was successful.");
             }
@@ -59,7 +59,7 @@ var DB = {
                 "name VARCHAR(20) NOT NULL," +
                 "weight DECIMAL(9,2) NOT NULL," +
                 "grade DECIMAL(9,2) NOT NULL," +
-                "FOREIGN KEY(courseId) REFERENCES course(id));"
+                "FOREIGN KEY(courseId) REFERENCES course(id) ON DELETE CASCADE);";
             function successCreateReview() {
                 console.info("SQL Success: Table grade creation was successful.");
             }
@@ -85,4 +85,4 @@ var DB = {
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     }
-}
+};
