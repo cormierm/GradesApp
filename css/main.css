@@ -1,3 +1,7 @@
+h1, h2, h3, h4, p, label {
+    color: white;
+    text-shadow: 2px 2px 8px dimgrey;
+}
 #pHomeGrade {
     font-size: 16em;
     text-align: center;
@@ -20,6 +24,8 @@ textarea.error {
     font-size: .8em;
     padding: 0;
     margin: 0;
+    color: white;
+    text-shadow: 2px 2px 8px dimgrey;
 }
 #lstGrades a {
     color: black;
@@ -35,7 +41,7 @@ textarea.error {
     text-decoration: none;
     border-radius: 5px;
     border: 1px solid gray;
-    background-color: #c4d7dd;
+    background-color: #454545;
     margin: 2px;
     padding: 5px;
 }
@@ -86,16 +92,37 @@ body {
     background: transparent;
 }
 
-#pageProfile {
-    background-color: ivory;
-    background-repeat:repeat-y;
-    background-position:center center;
-    background-attachment:scroll;
-    background-size:100% 100%;
-}
-
 #imgProfilePic {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5px;
+}
+
+.btnGradesAddCourse {
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
+    padding: 1em;
+    font-family: "Arial", Georgia, sans-serif;
+    font-weight: bold;
+    background-color: #FFFFFF;
+}
+
+.btnGradesEditProgram {
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
+    padding: 1em;
+    font-family: "Arial", Georgia, sans-serif;
+    font-weight: bold;
+    background-color: #FFFFFF;
+}
+
+button:hover {
+    background-color: #FFFFFF;
+    color: black;
+    border: 2px solid grey;
 }
