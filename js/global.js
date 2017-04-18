@@ -22,6 +22,10 @@ function btnAddGradeAdd_click() {
     }
 }
 
+function btnProfileSaveTarget_click() {
+    localStorage.setItem("targetGrade", $("#txtProfileGoal").val());
+}
+
 function btnGradesAddNewProgram_click() {
     $(location).prop('href', "#pageAddProgram");
 }
@@ -103,6 +107,9 @@ function pageHome_pageshow() {
     CalculateDB.selectAll();
 }
 
+function pageProfile_pageshow() {
+    $("#txtProfileGoal").val(localStorage.getItem("targetGrade"));
+}
 function init() {
     CalculateDB.selectAll();
 
@@ -112,6 +119,8 @@ function init() {
 
     $("#btnGradesAddNewProgram").on("click", btnGradesAddNewProgram_click);
     $("#chkGradesShowActive").on("change", chkGradesShowActive_change);
+
+    $("#btnProfileSaveTarget").on("click", btnProfileSaveTarget_click);
 
     $("#btnModifyCourseUpdate").on("click", btnModifyCourseUpdate_click);
     $("#btnModifyCourseDelete").on("click", btnModifyCourseDelete_click);
@@ -132,9 +141,13 @@ function init() {
     $("#pageModifyProgram").on("pageshow", pageModifyProgram_pageshow);
     $("#pageModifyGrade").on("pageshow", pageModifyGrade_pageshow);
     $("#pageHome").on("pageshow", pageHome_pageshow);
+    $("#pageProfile").on("pageshow", pageProfile_pageshow);
 
     if(localStorage.getItem("showIsActiveOnly") === null){
         localStorage.setItem("showIsActiveOnly", false);
+    }
+    if(localStorage.getItem("targetGrade") === null){
+        localStorage.setItem("targetGrade", 100);
     }
 }
 

@@ -118,8 +118,11 @@ function generateCourseHtmlByProgramId(programName, programId){
             var row = results.rows[i];
             courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row['id'] + " href='#'><li>" +
                 "<h3>" + row['name'] + "</h3>" +
-                "<p></p><span class='spanGrade'>Total Average: <span id='spanCalculatedGrade"+ row['id'] + "'></span>% " +
-                "Sum of Grades: <span id='spanCalculatedSumGrade"+ row['id'] + "'></span>%</span></p>" +
+                "<p><span class='spanGrade'>" +
+                "Total Average: <span id='spanCalculatedGrade"+ row['id'] + "'></span>% " +
+                "Sum of Grades: <span id='spanCalculatedSumGrade"+ row['id'] + "'></span>%<br>" +
+                "Required grades to reach target: <span id='spanCalculatedGoal'></span>%" +
+                "</span></p>" +
                 "</li></a>";
             calculateGrade(row['id'], "spanCalculatedGrade" + row['id'], "spanCalculatedSumGrade" + row['id']);
         }
