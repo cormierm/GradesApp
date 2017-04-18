@@ -99,8 +99,8 @@
             <div data-role="navbar">
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
-                    <li><a href="#pageProfile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a></li>
+                    <li><a href="#pageGrades" data-icon="grid" class="ui-btn-active ui-state-persist">Grades</a></li>
+                    <li><a href="#pageProfile" data-icon="user">Profile</a></li>
                 </ul>
             </div>
         </header>
@@ -155,7 +155,7 @@
     <div id="pageAddGrade" data-role="page">
         <header data-role="header" data-theme="b" data-position="fixed">
             <a href="#pageGrades" class="ui-btn ui-corner-all ui-btn-inline ui-mini footer-button-left ui-btn-icon-left ui-icon-back">Back</a>
-            <h1> Add Page </h1>
+            <h1> Add Grade </h1>
             <div data-role="navbar">
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
@@ -165,7 +165,7 @@
             </div>
         </header>
         <section data-role="content">
-            <h2>Add Course</h2>
+            <h2>Add Grade</h2>
             <form id="frmAddGrade">
                 <label for="selAddGradeCourses">Course:</label>
                 <select name="selAddGradeCourses" id="selAddGradeCourses">
@@ -228,9 +228,8 @@
             </div>
         </header>
         <section data-role="content">
-            <h3>
-                <span id="headerModifyCourseName">Not Initialized</span>
-            </h3>
+            <h3><span id="headerModifyCourseName">Not Initialized</span> Details</h3>
+            <h4>Grades Listing</h4>
             <ul id="courseGradeList" data-role="listview" data-type="horizontal"></ul>
             <button data-role="button" data-icon="plus" data-inline="true"
                data-iconpos="left" id="btnModifyCourseAddGrade" name="btnModifyCourseAddGrade">Add Grade</button>
