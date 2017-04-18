@@ -229,7 +229,15 @@ var CalculateDB = {
                     console.info(row['pname'] + " : " + row['cname'] + " : " + row['count'] + " : " + row['sumGrade']);
                     totalGrades += row['sumGrade'];
                 }
-                $("#calculatedTotalGrade").html(totalGrades / count);
+                var outputHtml = (totalGrades / count);
+                console.info("asdf:" + outputHtml);
+                if (isNaN(outputHtml)) {
+                    outputHtml = "N/A";
+                }
+                else {
+                    outputHtml = outputHtml.toString() + "%";
+                }
+                $("#calculatedTotalGrade").html(outputHtml);
             }
             tx.executeSql(sql, options, successSelectAll, errorHandler);
         }
