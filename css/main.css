@@ -51,14 +51,51 @@ textarea.error {
 #gradeAverageTitle {
     font-size: 30vw;
     text-align: center;
+    color: white;
+    font-family: "Arial", Georgia, sans-serif;
+    text-shadow: 2px 2px 8px dimgray;
 }
 
 #homePageTitle {
     font-size: 8vw;
     text-align: center;
+    color: white;
+    font-family: "Arial", Georgia, sans-serif;
+    text-shadow: 2px 2px 8px dimgray;
 }
 
 #subTitleGrade {
     font-size: 4vw;
     text-align: center;
+    color: white;
+    font-family: "Arial", Georgia, sans-serif;
+    text-shadow: 2px 2px 8px dimgray;
+}
+
+body {
+    background: url(../img/chalkboard.jpg);
+    background-repeat:repeat-y;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:100% 100%;
+}
+.ui-page {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+
+#pageProfile {
+    background-color: ivory;
+    background-repeat:repeat-y;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:100% 100%;
+}
+
+#imgProfilePic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
