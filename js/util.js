@@ -13,7 +13,10 @@ function calculateGrade(courseId, returnSelector, returnSumSelector){
             totalGrades += (row['weight'] / 100) * row['grade'];
             totalWeights += row['weight'];
         }
-        var totalAverageGrade = totalGrades / (totalWeights / 100)
+        var totalAverageGrade = totalGrades / (totalWeights / 100);
+        var targetGoal = parseFloat(localStorage.getItem("targetGrade"));
+        var goal = (targetGoal - totalGrades) / ((100 - totalWeights) / 100);
+        $("#spanCalculatedGoal").html(goal);
         $("#" + returnSelector).html(totalAverageGrade);
         $("#" + returnSumSelector).html(totalGrades);
     }
