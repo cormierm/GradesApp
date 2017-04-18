@@ -35,7 +35,7 @@
         </header>
         <section data-role="content">
             <h1 id="homePageTitle">Matt and Margo's Grades App</h1>
-            <h4 id="subTitleGrade">Your current grade average:</h4>
+            <h4 id="subTitleGrade">Your Current Grade Average:</h4>
             <div id="gradeAverageTitle"><span id="calculatedTotalGrade">Not Init</span>%</div>
             <button id="btnHomeGrades" data-role="button" data-icon="bullets">Grades Listing</button>
         </section>
@@ -84,8 +84,13 @@
         </header>
         <section data-role="content">
             <h2>Your Profile</h2>
+            <h4>Profile Photo:</h4>
+            <img src="img/profilePic.jpg" id="imgProfilePic"><br>
             <label for="txtProfileGoal">Target Grade</label>
-            <input type="text" id="txtProfileGoal" name="txtProfileGoal">
+            <input type="text" id="txtProfileGoal" name="txtProfileGoal"><br>
+            <button name="btnNativeSave" id="btnNativeSave" data-role="button" data-icon="gear"
+                    data-iconpos="left">Save Target</button>
+
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
