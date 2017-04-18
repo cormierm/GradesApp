@@ -111,7 +111,11 @@ function generateGradesList() {
 
 function generateCourseHtmlByProgramId(programName, programId){
     var courseHtmlCode = "<a class='programListItem' data-row-id=" + programId + " href='#'>" +
-        "<h3>" + programName + "</h3></a>";
+        "<h3>" + programName + "</h3></a>" +
+        "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId +
+        " data-iconpos='left' class='btnGradesAddCourse'>Add Course</button>" +
+        "<button data-role='button' data-icon='gear' data-inline='true' data-row-id=" + programId +
+        " data-iconpos='left' class='btnGradesEditProgram'>Edit Program</button>";
     function successSelectAllCoursesByProgramId(tx, results) {
         courseHtmlCode += "<ul data-role='listview' id='lstProgram" + programId + "'>";
         for (var i=0; i < results.rows.length; i++) {
@@ -126,11 +130,7 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "</li></a>";
             calculateGrade(row['id'], "spanCalculatedGrade" + row['id'], "spanCalculatedSumGrade" + row['id']);
         }
-        courseHtmlCode += "</ul>" +
-            "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId +
-            " data-iconpos='left' class='btnGradesAddCourse'>Add Course</button>" +
-            "<button data-role='button' data-icon='gear' data-inline='true' data-row-id=" + programId +
-            " data-iconpos='left' class='btnGradesEditProgram'>Edit Program</button>";
+        courseHtmlCode += "</ul>";
 
         var listGrades = $("#lstGrades");
         listGrades.html(listGrades.html() + courseHtmlCode);
