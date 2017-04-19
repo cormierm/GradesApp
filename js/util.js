@@ -4,19 +4,19 @@
  * Created On: April 14, 2017
  */
 
-function calculateGrade(courseId, returnSelector, returnSumSelector){
+function calculateGrade(courseId, returnSelector, returnSumSelector, spanCalculatedGoal){
     function successSelectAllCoursesByCourseId(tx, results) {
         var totalGrades = 0;
         var totalWeights = 0;
         for (var i=0; i < results.rows.length; i++) {
-            var row = results.rows[i];
-            totalGrades += (row['weight'] / 100) * row['grade'];
-            totalWeights += row['weight'];
+            var row = results.rows.item(i);
+            totalGrades += (row.weight / 100) * row.grade;
+            totalWeights += row.weight;
         }
         var totalAverageGrade = totalGrades / (totalWeights / 100);
         var targetGoal = parseFloat(localStorage.getItem("targetGrade"));
         var goal = (targetGoal - totalGrades) / ((100 - totalWeights) / 100);
-        $("#spanCalculatedGoal").html(goal);
+        $("#" + spanCalculatedGoal).html(goal);
         $("#" + returnSelector).html(totalAverageGrade);
         $("#" + returnSumSelector).html(totalGrades);
     }
@@ -38,7 +38,7 @@ function doValidate_frmAddProg() {
             txtAddProgName: {
                 required: "Program name is required",
                 minlength: "Program name must be at least 2 characters.",
-                maxlength: "Program name must be shorter than 20 characters"
+                maxlength: "Program name must be shorter than 30 characters"
             }
         }
     });
@@ -65,7 +65,7 @@ function doValidate_frmAddCourse() {
             txtAddCourseName: {
                 required: "Course name is required",
                 minlength: "Course name must be at least 2 characters.",
-                maxlength: "Course name must be shorter than 20 characters"
+                maxlength: "Course name must be shorter than 30 characters"
             }
         }
     });
@@ -103,7 +103,7 @@ function doValidate_frmAddGrade() {
             txtAddGradeName: {
                 required: "Grade name is required",
                 minlength: "Grade name must be at least 2 characters",
-                maxlength: "Grade name must be shorter than 20 characters"
+                maxlength: "Grade name must be shorter than 30 characters"
             },
             txtAddGradeWeight: {
                 required: "Grade weight is required",
@@ -135,7 +135,7 @@ function doValidate_frmModifyProg() {
             txtModifyProgName: {
                 required: "Program name is required",
                 minlength: "Program name must be at least 2 characters.",
-                maxlength: "Program name must be shorter than 20 characters"
+                maxlength: "Program name must be shorter than 30 characters"
             }
         }
     });
@@ -152,7 +152,7 @@ function doValidate_frmModifyCourse() {
             txtModifyCourseName: {
                 required: true,
                 minlength: 2,
-                maxlength: 20
+                maxlength: 30
             }
         },
         messages: {
@@ -162,7 +162,7 @@ function doValidate_frmModifyCourse() {
             txtModifyCourseName: {
                 required: "Course name is required",
                 minlength: "Course name must be at least 2 characters.",
-                maxlength: "Course name must be shorter than 20 characters"
+                maxlength: "Course name must be shorter than 30 characters"
             }
         }
     });
@@ -179,7 +179,7 @@ function doValidate_frmModifyGrade() {
             txtModifyGradeName: {
                 required: true,
                 minlength: 2,
-                maxlength: 20
+                maxlength: 30
             },
             txtModifyGradeWeight: {
                 required: true,
@@ -200,7 +200,7 @@ function doValidate_frmModifyGrade() {
             txtModifyGradeName: {
                 required: "Grade name is required",
                 minlength: "Grade name must be at least 2 characters.",
-                maxlength: "Grade name must be shorter than 20 characters"
+                maxlength: "Grade name must be shorter than 30 characters"
             },
             txtModifyGradeWeight: {
                 required: "Grade weight is required",

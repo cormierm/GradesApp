@@ -225,7 +225,7 @@ var CalculateDB = {
                 var totalGrades = 0;
                 var count = results.rows.length;
                 for (var i=0; i < results.rows.length; i++) {
-                    var row = results.rows[i];
+                    var row = results.rows.item(i);
                     console.info(row['pname'] + " : " + row['cname'] + " : " + row['count'] + " : " + row['sumGrade']);
                     totalGrades += row['sumGrade'];
                 }

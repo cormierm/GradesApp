@@ -4,6 +4,10 @@
  * Created On: April 11, 2017
  */
 
+function btnHomeGrades_click(){
+    $(location).prop('href', "#pageGrades");
+}
+
 function btnAddProgAdd_click() {
     if(doValidate_frmAddProg()) {
         addProgram();
@@ -112,6 +116,8 @@ function pageProfile_pageshow() {
 }
 function init() {
     CalculateDB.selectAll();
+
+    $("#btnHomeGrades").on("click", btnHomeGrades_click);
 
     $("#btnAddProgAdd").on("click", btnAddProgAdd_click);
     $("#btnAddCourseAdd").on("click", btnAddCourseAdd_click);
