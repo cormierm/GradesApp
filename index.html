@@ -59,11 +59,12 @@
             </div>
         </header>
         <section data-role="content">
-            <div id="lstGrades">
-
+            <div class="floatRight">
+                <input type="checkbox" id="chkGradesShowActive" name="chkGradesShowActive" data-role="checkbox"
+                       class="custom" data-mini="true">
+                <label id="lblShowActive" for="chkGradesShowActive">Show Active Only</label>
             </div>
-            <input type="checkbox" id="chkGradesShowActive" name="chkGradesShowActive" data-role="checkbox" checked>
-            <label for="chkGradesShowActive">Show Active Only</label>
+            <div id="lstGrades"></div>
             <button name="btnGradesAddNewProgram" id="btnGradesAddNewProgram" data-role="button"
                     data-icon="plus" data-iconpos="left">Add New Program</button>
         </section>

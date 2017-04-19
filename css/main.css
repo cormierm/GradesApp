@@ -147,3 +147,12 @@ button:hover {
     height: 20px;
     text-align: center;
 }
+
+#lblShowActive {
+    display: inline-block;
+    font-size: .75em;
+}
+
+.floatRight {
+    float: right;
+}
