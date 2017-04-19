@@ -130,20 +130,24 @@ function generateGradesList() {
 
 function generateCourseHtmlByProgramId(programName, programId){
     var courseHtmlCode = "<br>" + "<h3>" +
-        programName + "<a class='programListItem' data-row-id=" + programId + " href='#'>" + "<button data-role='button' data-icon='gear' data-inline='true' data-row-id=" + programId +
-        " data-iconpos='left' class='btnGradesEditProgram'><img src='img/btnEdit.jpg' height='15px' width='15px'></button>" + "</h3></a>";
+        programName + "<a class='programListItem' data-row-id=" + programId + " href='#'>" +
+        "<button data-role='button' data-icon='gear' data-inline='true' data-row-id=" + programId +
+        " data-iconpos='left' class='btnGradesEditProgram'><img src='img/btnEdit.jpg' height='15px' width='15px'></button>" +
+        "</h3></a>";
     function successSelectAllCoursesByProgramId(tx, results) {
         courseHtmlCode += "<ul data-role='listview' id='lstProgram" + programId + "'>";
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
             courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row.id + " href='#'><li>" +
-                "<h3>" + row.name + "</h3>" +
-                "<p><span class='spanGrade' id='spanGradeStats"+ row.id + "'>" +
-                "Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>% " +
-                "Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%<br>" +
-                "Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%<br>" +
-                "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +
-                "</span></p>" +
+                "<p>" +
+                "<span class='spanGradeHeader'>" + row.name + "</span><br>" +
+                "<span class='spanGradeMain' id='spanGradeStats"+ row.id + "'>" +
+                    "Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>% " +
+                    "Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%<br>" +
+                    "Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%<br>" +
+                    "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +
+                "</span>" +
+                "</p>" +
                 "</li></a><br>";
             calculateGrade(row.id);
         }
