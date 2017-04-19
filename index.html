@@ -90,10 +90,11 @@
             <h4>Profile Photo:</h4>
             <img src="img/profilePic.jpg" id="imgProfilePic"><br>
             <label for="txtProfileGoal">Target Grade:</label>
-            <input type="text" id="txtProfileGoal" name="txtProfileGoal">
+            <input type="text" id="txtProfileGoal" name="txtProfileGoal" data-clear-btn="true">
             <button name="btnProfileSaveTarget" id="btnProfileSaveTarget" data-role="button">Save Target</button>
             <br>
-            <button name="btnProfileClearDatabase" id="btnProfileClearDatabase" data-role="button">Clear Database</button>
+            <button name="btnProfileClearDatabase" id="btnProfileClearDatabase" data-role="button"
+                data-theme="b" style="background-color: red">Clear Database</button>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
@@ -152,7 +153,7 @@
             <h2>Add Program</h2>
             <form id="frmAddProg">
                 <label for="txtAddProgName">Program Name:</label>
-                <input type="text" name="txtAddProgName" id="txtAddProgName">
+                <input type="text" name="txtAddProgName" id="txtAddProgName" data-clear-btn="true">
                 <input type="checkbox" id="chkAddProgIsActive" name="chkAddProgIsActive" data-role="checkbox" checked>
                 <label for="chkAddProgIsActive">Is Active?</label>
                 <br>
@@ -185,7 +186,7 @@
                     <option value="NotInit">Not Initialized</option>
                 </select>
                 <label for="txtAddCourseName">Course Name:</label>
-                <input type="text" name="txtAddCourseName" id="txtAddCourseName">
+                <input type="text" name="txtAddCourseName" id="txtAddCourseName" data-clear-btn="true">
                 <input type="checkbox" id="chkAddCourseIsActive" name="chkAddCourseIsActive" data-role="checkbox" checked>
                 <label for="chkAddCourseIsActive">Is Active?</label>
                 <br>
@@ -218,11 +219,11 @@
                     <option value="NotInit">Not Initialized</option>
                 </select>
                 <label for="txtAddGradeName">Assignment/Exam Name:</label>
-                <input type="text" name="txtAddGradeName" id="txtAddGradeName">
+                <input type="text" name="txtAddGradeName" id="txtAddGradeName" data-clear-btn="true">
                 <label for="txtAddGradeWeight">Weight (%):</label>
-                <input type="number" name="txtAddGradeWeight" id="txtAddGradeWeight">
+                <input type="number" name="txtAddGradeWeight" id="txtAddGradeWeight" data-clear-btn="true">
                 <label for="txtAddGradeGrade">Grade (%):</label>
-                <input type="number" name="txtAddGradeGrade" id="txtAddGradeGrade">
+                <input type="number" name="txtAddGradeGrade" id="txtAddGradeGrade" data-clear-btn="true">
                 <br>
                 <input type="submit" data-role="button" id="btnAddGradeAdd" name="btnAddGradeAdd" value="Add Grade">
                 <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
@@ -249,13 +250,16 @@
             <h2>Modify Program</h2>
             <form id="frmModifyProg">
                 <label for="txtModifyProgName">Program Name:</label>
-                <input type="text" name="txtModifyProgName" id="txtModifyProgName">
+                <input type="text" name="txtModifyProgName" id="txtModifyProgName" data-clear-btn="true">
                 <input type="checkbox" id="chkModifyProgIsActive" name="chkModifyProgIsActive" data-role="checkbox" checked>
                 <label for="chkModifyProgIsActive">Is Active?</label>
                 <br>
                 <input type="submit" data-role="button" id="btnModifyProgUpdate" name="btnModifyProgUpdate" value="Update Program">
-                <button id="btnModifyProgDelete" name="btnModifyProgDelete" data-role="button">Delete</button>
                 <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
+                <br>
+                <button id="btnModifyProgDelete" name="btnModifyProgDelete" data-role="button"
+                        data-theme="b" style="background-color: red">Delete</button>
+
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
@@ -289,18 +293,18 @@
                     <option value="NotInit">Not Initialized</option>
                 </select>
                 <label for="txtModifyCourseName">Course Name:</label>
-                <input type="text" name="txtModifyCourseName" id="txtModifyCourseName">
+                <input type="text" name="txtModifyCourseName" id="txtModifyCourseName" data-clear-btn="true">
                 <input type="checkbox" id="chkModifyCourseIsActive" name="chkModifyCourseIsActive" data-role="checkbox" checked>
                 <label for="chkModifyCourseIsActive">Is Active?</label>
                 <br>
-                <fieldset data-role="controlgroup" data-type="horizontal">
-                    <input type="submit" data-role="button" id="btnModifyCourseUpdate" name="btnModifyCourseUpdate"
-                           data-inline=true value="Update">
-                    <input type="button" id="btnModifyCourseDelete" name="btnModifyCourseDelete" data-role="button"
-                                              data-inline=true value="Delete">
-                    <input type="button" id="btnModifyCourseCancel" name="btnModifyCourseCancel"
-                           data-role="button" data-inline=true value="Cancel">
-                </fieldset>
+                <input type="submit" data-role="button" id="btnModifyCourseUpdate" name="btnModifyCourseUpdate"
+                       value="Update">
+                <input type="button" id="btnModifyCourseCancel" name="btnModifyCourseCancel"
+                       data-role="button" value="Cancel">
+                <br>
+                <button type="button" id="btnModifyCourseDelete" name="btnModifyCourseDelete" data-role="button"
+                        data-theme="b" style="background-color: red">Delete</button>
+
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
@@ -328,15 +332,17 @@
                     <option value="NotInit">Not Initialized</option>
                 </select>
                 <label for="txtModifyGradeName">Assignment/Exam Name:</label>
-                <input type="text" name="txtModifyGradeName" id="txtModifyGradeName">
+                <input type="text" name="txtModifyGradeName" id="txtModifyGradeName" data-clear-btn="true">
                 <label for="txtModifyGradeWeight">Weight (%):</label>
-                <input type="number" name="txtModifyGradeWeight" id="txtModifyGradeWeight">
+                <input type="number" name="txtModifyGradeWeight" id="txtModifyGradeWeight" data-clear-btn="true">
                 <label for="txtModifyGradeGrade">Grade (%):</label>
-                <input type="number" name="txtModifyGradeGrade" id="txtModifyGradeGrade">
+                <input type="number" name="txtModifyGradeGrade" id="txtModifyGradeGrade" data-clear-btn="true">
                 <br>
                 <input type="submit" data-role="button" id="btnModifyGradeUpdate" name="btnModifyGradeUpdate" value="Update Grade">
-                <button id="btnModifyGradeDelete" name="btnModifyGradeDelete" data-role="button">Delete</button>
                 <a href="#pageModifyCourse"><input type="button" data-role="button" value="Cancel"></a>
+                <br>
+                <button id="btnModifyGradeDelete" name="btnModifyGradeDelete" data-role="button"
+                        data-theme="b" style="background-color: red">Delete</button>
             </form>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
