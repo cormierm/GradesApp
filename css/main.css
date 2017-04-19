@@ -2,6 +2,12 @@ h1, h2, h3, h4, p, label {
     color: white;
     text-shadow: 2px 2px 8px dimgrey;
 }
+
+.programListItem {
+    color: white;
+    text-shadow: 2px 2px 8px dimgrey;
+}
+
 #pHomeGrade {
     font-size: 16em;
     text-align: center;
@@ -100,24 +106,26 @@ body {
 }
 
 .btnGradesAddCourse {
-    border: 2px solid dimgrey;
+    border: 1px solid dimgrey;
     border-radius: 5px;
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
-    padding: 1em;
+    padding: 0.6em;
     font-family: "Arial", Georgia, sans-serif;
     font-weight: bold;
     background-color: #FFFFFF;
 }
 
 .btnGradesEditProgram {
-    border: 2px solid grey;
+    border: 1px solid grey;
     border-radius: 5px;
-    width: 50%;
+    padding-left: 1%;
+    padding-right: 1%;
+    width: 4%;
+    height: 6%;
     margin: 0 auto;
-    padding: 1em;
+    margin-left: 0.5em;
     font-family: "Arial", Georgia, sans-serif;
-    font-weight: bold;
     background-color: #FFFFFF;
 }
 
