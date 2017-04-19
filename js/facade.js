@@ -119,7 +119,7 @@ function generateCourseHtmlByProgramId(programName, programId){
             var row = results.rows.item(i);
             courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row.id + " href='#'><li>" +
                 "<h3>" + row.name + "</h3>" +
-                "<p><span class='spanGrade'>" +
+                "<p><span class='spanGrade' id='spanGradeStats"+ row.id + "'>" +
                 "Total Average: <span id='spanCalculatedGrade"+ row.id + "'></span>% " +
                 "Sum of Grades: <span id='spanCalculatedSumGrade"+ row.id + "'></span>%<br>" +
                 "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +

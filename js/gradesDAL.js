@@ -235,7 +235,7 @@ var CalculateDB = {
                     outputHtml = "N/A";
                 }
                 else {
-                    outputHtml = outputHtml.toString() + "%";
+                    outputHtml = outputHtml.toFixed(0).toString() + "%";
                 }
                 $("#calculatedTotalGrade").html(outputHtml);
             }

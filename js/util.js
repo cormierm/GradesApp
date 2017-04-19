@@ -8,17 +8,23 @@ function calculateGrade(courseId, returnSelector, returnSumSelector, spanCalcula
     function successSelectAllCoursesByCourseId(tx, results) {
         var totalGrades = 0;
         var totalWeights = 0;
-        for (var i=0; i < results.rows.length; i++) {
-            var row = results.rows.item(i);
-            totalGrades += (row.weight / 100) * row.grade;
-            totalWeights += row.weight;
+        if (results.rows.length == 0) {
+            $("#spanGradeStats" + courseId).html("No grades entered. No stats to display.");
         }
-        var totalAverageGrade = totalGrades / (totalWeights / 100);
-        var targetGoal = parseFloat(localStorage.getItem("targetGrade"));
-        var goal = (targetGoal - totalGrades) / ((100 - totalWeights) / 100);
-        $("#" + spanCalculatedGoal).html(goal);
-        $("#" + returnSelector).html(totalAverageGrade);
-        $("#" + returnSumSelector).html(totalGrades);
+        else {
+            for (var i=0; i < results.rows.length; i++) {
+                var row = results.rows.item(i);
+                totalGrades += (row.weight / 100) * row.grade;
+                totalWeights += row.weight;
+            }
+            var totalAverageGrade = totalGrades / (totalWeights / 100);
+            var targetGoal = parseFloat(localStorage.getItem("targetGrade"));
+            var goal = (targetGoal - totalGrades) / ((100 - totalWeights) / 100);
+            $("#" + spanCalculatedGoal).html(goal.toFixed(2));
+            $("#" + returnSelector).html(totalAverageGrade.toFixed(2));
+            $("#" + returnSumSelector).html(totalGrades.toFixed(2));
+        }
+
     }
     var options = [courseId];
     GradeDB.selectAllByCourse(successSelectAllCoursesByCourseId, options);
