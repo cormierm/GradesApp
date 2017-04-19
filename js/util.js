@@ -4,19 +4,19 @@
  * Created On: April 14, 2017
  */
 
-function calculateGrade(courseId, returnSelector, returnSumSelector){
+function calculateGrade(courseId, returnSelector, returnSumSelector, spanCalculatedGoal){
     function successSelectAllCoursesByCourseId(tx, results) {
         var totalGrades = 0;
         var totalWeights = 0;
         for (var i=0; i < results.rows.length; i++) {
-            var row = results.rows[i];
-            totalGrades += (row['weight'] / 100) * row['grade'];
-            totalWeights += row['weight'];
+            var row = results.rows.item(i);
+            totalGrades += (row.weight / 100) * row.grade;
+            totalWeights += row.weight;
         }
         var totalAverageGrade = totalGrades / (totalWeights / 100);
         var targetGoal = parseFloat(localStorage.getItem("targetGrade"));
         var goal = (targetGoal - totalGrades) / ((100 - totalWeights) / 100);
-        $("#spanCalculatedGoal").html(goal);
+        $("#" + spanCalculatedGoal).html(goal);
         $("#" + returnSelector).html(totalAverageGrade);
         $("#" + returnSumSelector).html(totalGrades);
     }
