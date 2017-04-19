@@ -81,7 +81,6 @@ var DB = {
             tx.executeSql(sql, options, successDrop, errorHandler);
             sql = "DROP TABLE IF EXISTS grade;";
             tx.executeSql(sql, options, successDrop, errorHandler);
-
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     }

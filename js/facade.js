@@ -90,9 +90,28 @@ function addGrade() {
     $(location).prop('href', "#pageModifyCourse");
 }
 
+function setTargetGrade() {
+    var targetGrade = $("#txtProfileGoal").val();
+    localStorage.setItem("targetGrade", targetGrade);
+    alert("Target Grade set to: " + targetGrade);
+}
+
+function clearDatabase() {
+    var result = confirm("Are you sure  you want to clear the database? All data will be lost!");
+    try {
+        if (result) {
+            DB.dropTables();
+            alert("Database Successfully Cleared.");
+            DB.createTables();
+        }
+    } catch (e) {
+        alert("Error Clearing Database: " + e);
+    }
+}
+
 function generateGradesList() {
     var chkbox = $("#chkGradesShowActive");
-    if (localStorage.getItem("showIsActiveOnly") == 'true'){
+    if (localStorage.getItem("showIsActiveOnly") === 'true'){
         chkbox.prop("checked", true);
     }
     else {
@@ -120,12 +139,13 @@ function generateCourseHtmlByProgramId(programName, programId){
             courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row.id + " href='#'><li>" +
                 "<h3>" + row.name + "</h3>" +
                 "<p><span class='spanGrade' id='spanGradeStats"+ row.id + "'>" +
-                "Total Average: <span id='spanCalculatedGrade"+ row.id + "'></span>% " +
-                "Sum of Grades: <span id='spanCalculatedSumGrade"+ row.id + "'></span>%<br>" +
+                "Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>% " +
+                "Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%<br>" +
+                "Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%<br>" +
                 "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +
                 "</span></p>" +
                 "</li></a><br>";
-            calculateGrade(row.id, "spanCalculatedGrade" + row.id, "spanCalculatedSumGrade" + row.id, "spanCalculatedGoal" + row.id);
+            calculateGrade(row.id);
         }
         courseHtmlCode += "</ul>" +
             "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId + " " +
@@ -189,7 +209,7 @@ function populateSelectListPrograms(selectList, programId) {
         var htmlCode = "";
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
-            if (programId == row.id) {
+            if (programId === row.id) {
                 htmlCode += "<option value='" + row.id + "' selected>" + row.name
                     + "</option>";
             }
@@ -209,7 +229,7 @@ function populateSelectListCourses(selectList, courseId) {
         var htmlCode = "";
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
-            if (courseId == row.id){
+            if (courseId === row.id){
                 htmlCode += "<option value='" + row.id + "' selected>" + row.name
                     + "</option>";
             }
@@ -233,7 +253,7 @@ function loadModifyCoursePage() {
         var row = results.rows.item(0);
         $("#headerModifyCourseName").html(row.name);
         $("#txtModifyCourseName").val(row.name);
-        if (row['isActive'] == 'true') {
+        if (row['isActive'] === 'true') {
             $("#chkModifyCourseIsActive").prop("checked", true).checkboxradio("refresh");
         }
         else {
@@ -251,14 +271,13 @@ function loadModifyProgramPage() {
     function successSelectOne(tx, results) {
         var row = results.rows.item(0);
         $("#txtModifyProgName").val(row.name);
-        if (row['isActive'] == 'true') {
+        if (row['isActive'] === 'true') {
             $("#chkModifyProgIsActive").prop("checked", true).checkboxradio("refresh");
         }
         else {
             $("#chkModifyProgIsActive").prop("checked", false).checkboxradio("refresh");
         }
     }
-
     var options = [programId];
     ProgramDB.select(options, successSelectOne);
 }

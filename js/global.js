@@ -27,7 +27,11 @@ function btnAddGradeAdd_click() {
 }
 
 function btnProfileSaveTarget_click() {
-    localStorage.setItem("targetGrade", $("#txtProfileGoal").val());
+    setTargetGrade();
+}
+
+function btnProfileClearDatabase_click() {
+    clearDatabase();
 }
 
 function btnGradesAddNewProgram_click() {
@@ -114,6 +118,7 @@ function pageHome_pageshow() {
 function pageProfile_pageshow() {
     $("#txtProfileGoal").val(localStorage.getItem("targetGrade"));
 }
+
 function init() {
     CalculateDB.selectAll();
 
@@ -127,6 +132,7 @@ function init() {
     $("#chkGradesShowActive").on("change", chkGradesShowActive_change);
 
     $("#btnProfileSaveTarget").on("click", btnProfileSaveTarget_click);
+    $("#btnProfileClearDatabase").on("click", btnProfileClearDatabase_click);
 
     $("#btnModifyCourseUpdate").on("click", btnModifyCourseUpdate_click);
     $("#btnModifyCourseDelete").on("click", btnModifyCourseDelete_click);

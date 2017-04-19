@@ -8,7 +8,7 @@ var ProgramDB = {
     selectAll: function (successSelectAll) {
         function txFunction(tx) {
             var sql = "SELECT * FROM program;";
-            if (localStorage.getItem("showIsActiveOnly") == 'true') {
+            if (localStorage.getItem("showIsActiveOnly") === 'true') {
                 sql = "SELECT * FROM program WHERE isActive='true';";
             }
             var options = [];
@@ -65,7 +65,7 @@ var CourseDB = {
     selectAll: function (successSelectAll) {
         function txFunction(tx) {
             var sql = "SELECT * FROM course;";
-            if (localStorage.getItem("showIsActiveOnly") == 'true') {
+            if (localStorage.getItem("showIsActiveOnly") === 'true') {
                 sql = "SELECT * FROM course WHERE isActive='true';";
             }
             var options = [];
@@ -76,7 +76,7 @@ var CourseDB = {
     selectAllByProgram: function (successSelectAll, options) {
         function txFunction(tx) {
             var sql = "SELECT * FROM course WHERE programId=?;";
-            if (localStorage.getItem("showIsActiveOnly") == 'true') {
+            if (localStorage.getItem("showIsActiveOnly") === 'true') {
                 sql = "SELECT * FROM course WHERE programId=? AND isActive='true';";
             }
             tx.executeSql(sql, options, successSelectAll, errorHandler);

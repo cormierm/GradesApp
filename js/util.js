@@ -4,11 +4,11 @@
  * Created On: April 14, 2017
  */
 
-function calculateGrade(courseId, returnSelector, returnSumSelector, spanCalculatedGoal){
+function calculateGrade(courseId){
     function successSelectAllCoursesByCourseId(tx, results) {
         var totalGrades = 0;
         var totalWeights = 0;
-        if (results.rows.length == 0) {
+        if (results.rows.length === 0) {
             $("#spanGradeStats" + courseId).html("No grades entered. No stats to display.");
         }
         else {
@@ -20,11 +20,11 @@ function calculateGrade(courseId, returnSelector, returnSumSelector, spanCalcula
             var totalAverageGrade = totalGrades / (totalWeights / 100);
             var targetGoal = parseFloat(localStorage.getItem("targetGrade"));
             var goal = (targetGoal - totalGrades) / ((100 - totalWeights) / 100);
-            $("#" + spanCalculatedGoal).html(goal.toFixed(2));
-            $("#" + returnSelector).html(totalAverageGrade.toFixed(2));
-            $("#" + returnSumSelector).html(totalGrades.toFixed(2));
+            $("#spanAverageGrade" + courseId).html(totalAverageGrade.toFixed(2));
+            $("#spanCurrentProgress" + courseId).html(totalWeights.toFixed(2));
+            $("#spanCurrentGradesTotal" + courseId).html(totalGrades.toFixed(2));
+            $("#spanCalculatedGoal" + courseId).html(goal.toFixed(2));
         }
-
     }
     var options = [courseId];
     GradeDB.selectAllByCourse(successSelectAllCoursesByCourseId, options);

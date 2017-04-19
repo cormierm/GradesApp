@@ -89,10 +89,10 @@
             <h2>Your Profile</h2>
             <h4>Profile Photo:</h4>
             <img src="img/profilePic.jpg" id="imgProfilePic"><br>
-            <label for="txtProfileGoal">Target Grade</label>
+            <label for="txtProfileGoal">Target Grade:</label>
             <input type="text" id="txtProfileGoal" name="txtProfileGoal"><br>
             <button name="btnProfileSaveTarget" id="btnProfileSaveTarget" data-role="button">Save Target</button>
-            <button name="btnClearData" id="btnClearData" data-role="button">Clear Database</button>
+            <button name="btnProfileClearDatabase" id="btnProfileClearDatabase" data-role="button">Clear Database</button>
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
@@ -154,6 +154,7 @@
                 <input type="text" name="txtAddProgName" id="txtAddProgName">
                 <input type="checkbox" id="chkAddProgIsActive" name="chkAddProgIsActive" data-role="checkbox" checked>
                 <label for="chkAddProgIsActive">Is Active?</label>
+                <br>
                 <input type="submit" data-role="button" id="btnAddProgAdd" name="btnAddProgAdd" value="Add Program">
                 <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
             </form>
@@ -186,6 +187,7 @@
                 <input type="text" name="txtAddCourseName" id="txtAddCourseName">
                 <input type="checkbox" id="chkAddCourseIsActive" name="chkAddCourseIsActive" data-role="checkbox" checked>
                 <label for="chkAddCourseIsActive">Is Active?</label>
+                <br>
                 <input type="submit" data-role="button" id="btnAddCourseAdd" name="btnAddCourseAdd" value="Add Course">
                 <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
             </form>
@@ -216,10 +218,11 @@
                 </select>
                 <label for="txtAddGradeName">Assignment/Exam Name:</label>
                 <input type="text" name="txtAddGradeName" id="txtAddGradeName">
-                <label for="txtAddGradeWeight">Weight:</label>
+                <label for="txtAddGradeWeight">Weight (%):</label>
                 <input type="number" name="txtAddGradeWeight" id="txtAddGradeWeight">
-                <label for="txtAddGradeGrade">Grade:</label>
+                <label for="txtAddGradeGrade">Grade (%):</label>
                 <input type="number" name="txtAddGradeGrade" id="txtAddGradeGrade">
+                <br>
                 <input type="submit" data-role="button" id="btnAddGradeAdd" name="btnAddGradeAdd" value="Add Grade">
                 <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
             </form>
@@ -248,6 +251,7 @@
                 <input type="text" name="txtModifyProgName" id="txtModifyProgName">
                 <input type="checkbox" id="chkModifyProgIsActive" name="chkModifyProgIsActive" data-role="checkbox" checked>
                 <label for="chkModifyProgIsActive">Is Active?</label>
+                <br>
                 <input type="submit" data-role="button" id="btnModifyProgUpdate" name="btnModifyProgUpdate" value="Update Program">
                 <button id="btnModifyProgDelete" name="btnModifyProgDelete" data-role="button">Delete</button>
                 <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
@@ -287,6 +291,7 @@
                 <input type="text" name="txtModifyCourseName" id="txtModifyCourseName">
                 <input type="checkbox" id="chkModifyCourseIsActive" name="chkModifyCourseIsActive" data-role="checkbox" checked>
                 <label for="chkModifyCourseIsActive">Is Active?</label>
+                <br>
                 <fieldset data-role="controlgroup" data-type="horizontal">
                     <input type="submit" data-role="button" id="btnModifyCourseUpdate" name="btnModifyCourseUpdate"
                            data-inline=true value="Update">
@@ -323,12 +328,13 @@
                 </select>
                 <label for="txtModifyGradeName">Assignment/Exam Name:</label>
                 <input type="text" name="txtModifyGradeName" id="txtModifyGradeName">
-                <label for="txtModifyGradeWeight">Weight:</label>
+                <label for="txtModifyGradeWeight">Weight (%):</label>
                 <input type="number" name="txtModifyGradeWeight" id="txtModifyGradeWeight">
-                <label for="txtModifyGradeGrade">Grade:</label>
+                <label for="txtModifyGradeGrade">Grade (%):</label>
                 <input type="number" name="txtModifyGradeGrade" id="txtModifyGradeGrade">
+                <br>
                 <input type="submit" data-role="button" id="btnModifyGradeUpdate" name="btnModifyGradeUpdate" value="Update Grade">
-                <a href="#pageModifyCourse"><input type="button" id="btnModifyGradeDelete" name="btnModifyGradeDelete" data-role="button" value="Delete"></a>
+                <button id="btnModifyGradeDelete" name="btnModifyGradeDelete" data-role="button">Delete</button>
                 <a href="#pageModifyCourse"><input type="button" data-role="button" value="Cancel"></a>
             </form>
         </section>
