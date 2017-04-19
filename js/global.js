@@ -79,7 +79,6 @@ function btnModifyGradeUpdate_click() {
     if(doValidate_frmModifyGrade()){
         updateGrade();
     }
-
 }
 
 function btnModifyGradeDelete_click() {
@@ -164,15 +163,15 @@ function init() {
 }
 
 function initDB() {
-    console.info("Initializing database..");
+    console.info("WebSQL: Initializing database..");
     try {
         DB.createDatabase();
         if (db) {
-            console.info("Initializing tables..");
+            console.info("WebSQL: Initializing tables..");
             DB.createTables();
         }
     } catch (e) {
-        console.error("SQL Error: (Fatal) Error in initDB, cannot proceed.");
+        console.error("WebSQL Error: (Fatal) Error in initDB, cannot proceed.");
     }
 }
 

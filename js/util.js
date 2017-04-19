@@ -9,7 +9,7 @@ function calculateGrade(courseId){
         var totalGrades = 0;
         var totalWeights = 0;
         if (results.rows.length === 0) {
-            $("#spanGradeStats" + courseId).html("No grades entered. No stats to display.");
+            $("#spanGradeStats" + courseId).html("No grades added.");
         }
         else {
             for (var i=0; i < results.rows.length; i++) {

@@ -29,7 +29,7 @@ var ProgramDB = {
                 "(name, isActive) " +
                 "VALUES (?, ?);";
             function successInsertProgram() {
-                console.info("SQL Success: Successfully inserted into program.");
+                console.info("WebSQL Success: Inserted into program.");
                 alert("New Program Created.");
             }
             tx.executeSql(sql, options, successInsertProgram, errorHandler);
@@ -40,7 +40,7 @@ var ProgramDB = {
         function txFunction(tx) {
             var sql = "UPDATE program SET name=?, isActive=? WHERE id=?;";
             function successUpdateCourse() {
-                console.info("SQL Success: Successfully updated program.");
+                console.info("WebSQL Success: Updated program.");
                 alert("Program Successfully Updated.");
             }
             tx.executeSql(sql, options, successUpdateCourse, errorHandler);
@@ -52,7 +52,7 @@ var ProgramDB = {
             var sql = "DELETE FROM program WHERE id=?;";
 
             function successCourseDelete() {
-                console.info("Success: Delete successful");
+                console.info("WebSQL Success: Deleted program.");
                 alert ("Program Deleted Successfully.");
             }
             tx.executeSql(sql, options, successCourseDelete, errorHandler);
@@ -96,7 +96,7 @@ var CourseDB = {
                 "(programId, name, isActive) " +
                 "VALUES (?, ?, ?);";
             function successInsertCourse() {
-                console.info("SQL Success: Successfully inserted into course.");
+                console.info("WebSQL Success: Inserted into course.");
                 alert("New Course Created.");
             }
             tx.executeSql(sql, options, successInsertCourse, errorHandler);
@@ -107,7 +107,7 @@ var CourseDB = {
         function txFunction(tx) {
             var sql = "UPDATE course SET programId=?, name=?, isActive=? WHERE id=?;";
             function successUpdateCourse() {
-                console.info("SQL Success: Successfully updated course.");
+                console.info("WebSQL Success: Updated course.");
                 alert("Course Successfully Updated.");
             }
             tx.executeSql(sql, options, successUpdateCourse, errorHandler);
@@ -118,7 +118,7 @@ var CourseDB = {
         function txFunction(tx) {
             var sql = "DELETE FROM course WHERE id=?;";
             function successCourseDelete() {
-                console.info("Success: Course deleted successful");
+                console.info("WebSQL Success: Deleted course.");
                 alert ("Course Deleted Successfully.");
             }
             tx.executeSql(sql, options, successCourseDelete, errorHandler);
@@ -167,7 +167,7 @@ var GradeDB = {
                 "(courseId, name, weight, grade) " +
                 "VALUES (?, ?, ?, ?);";
             function successInsertCourse() {
-                console.info("SQL Success: Successfully inserted into grade.");
+                console.info("WebSQL Success: Inserted into grade.");
                 alert("New Grade Created.");
             }
             tx.executeSql(sql, options, successInsertCourse, errorHandler);
@@ -178,7 +178,7 @@ var GradeDB = {
         function txFunction(tx) {
             var sql = "UPDATE grade SET courseId=?, name=?, weight=?, grade=? WHERE id=?;";
             function successUpdate() {
-                console.info("SQL Success: Successfully updated grade.");
+                console.info("WebSQL Success: Updated grade.");
                 alert("Grade Successfully Updated.");
             }
             tx.executeSql(sql, options, successUpdate, errorHandler);
@@ -189,7 +189,7 @@ var GradeDB = {
         function txFunction(tx) {
             var sql = "DELETE FROM grade WHERE id=?;";
             function successDelete() {
-                console.info("Success: Grade deleted successfully");
+                console.info("WebSQL Success: Deleted from grade");
                 alert ("Grade Deleted Successfully.");
             }
             tx.executeSql(sql, options, successDelete, errorHandler);
@@ -200,7 +200,7 @@ var GradeDB = {
         function txFunction(tx) {
             var sql = "DELETE FROM grade WHERE courseId=?;";
             function successDelete() {
-                console.info("Success: Grade deleted successful");
+                console.info("WebSQL Success: Deleted from grade by courseId.");
             }
             tx.executeSql(sql, options, successDelete, errorHandler);
         }
@@ -226,11 +226,9 @@ var CalculateDB = {
                 var count = results.rows.length;
                 for (var i=0; i < results.rows.length; i++) {
                     var row = results.rows.item(i);
-                    console.info(row['pname'] + " : " + row['cname'] + " : " + row['count'] + " : " + row['sumGrade']);
                     totalGrades += row['sumGrade'];
                 }
                 var outputHtml = (totalGrades / count);
-                console.info("asdf:" + outputHtml);
                 if (isNaN(outputHtml)) {
                     outputHtml = "N/A";
                 }

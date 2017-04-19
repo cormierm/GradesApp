@@ -151,7 +151,6 @@ function generateCourseHtmlByProgramId(programName, programId){
             "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId + " " +
             "data-iconpos='left' class='btnGradesAddCourse ui-btn ui-icon-plus ui-btn-icon-left ui-shadow ui-corner-all'>Add Course</button>" +
             "<br>";
-
         var listGrades = $("#lstGrades");
         listGrades.html(listGrades.html() + courseHtmlCode);
 
@@ -167,7 +166,6 @@ function generateCourseHtmlByProgramId(programName, programId){
             localStorage.setItem("selectedProgramId", $(this).attr("data-row-id"));
             $(location).prop('href', "#pageAddCourse");
         }
-
         $(".courseListItem").on("click", clickCourseHandler);
         $(".programListItem").on("click", clickProgramHandler);
         $(".btnGradesAddCourse").on("click", btnGradesAddCourse_click);
@@ -188,17 +186,11 @@ function generateGradeHtmlByCourseId(courseId){
         var list = $("#courseGradeList");
         list.html(gradeHtmlCode);
         list.listview("refresh");
-
-        //var listCourse = $("#courseId" + courseId);
-        //listCourse.html(gradeHtmlCode);
-
         function clickGradeHandler() {
             localStorage.setItem("selectedGradeId", $(this).attr("data-row-id"));
             $(location).prop('href', "#pageModifyGrade");
         }
         $(".gradeListItem").on("click", clickGradeHandler);
-
-
     }
     var options = [courseId];
     GradeDB.selectAllByCourse(successSelectAllCoursesByCourseId, options);
@@ -261,7 +253,6 @@ function loadModifyCoursePage() {
         }
         populateSelectListPrograms($("#selModifyCoursePrograms"), row['programId']);
     }
-
     var options = [courseId];
     CourseDB.select(options, successSelectOne);
 }
@@ -292,7 +283,6 @@ function loadModifyGradePage() {
         calculateSumOfWeightsForModifyGrade();
         populateSelectListCourses($("#selModifyGradeCourses"), row['courseId']);
     }
-
     var options = [gradeId];
     GradeDB.select(options, successSelectOne);
 }
