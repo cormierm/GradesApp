@@ -108,13 +108,7 @@ body {
 .btnGradesEditProgram {
     border: 1px solid grey;
     border-radius: 5px;
-    padding-left: 1%;
-    padding-right: 1%;
-    width: 4%;
-    height: 6%;
-    margin: 0 auto;
     margin-left: 0.5em;
-    font-family: "Arial", Georgia, sans-serif;
     background-color: #FFFFFF;
 }
 
