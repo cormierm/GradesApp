@@ -76,7 +76,7 @@
     <div id="pageProfile" data-role="page">
         <header data-role="header" data-theme="b" data-position="fixed">
             <a href="./" class="ui-btn ui-corner-all ui-btn-inline ui-mini footer-button-left ui-btn-icon-left ui-icon-back">Back</a>
-            <h1> Profile </h1>
+            <h1> Settings </h1>
             <div data-role="navbar">
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
@@ -87,12 +87,16 @@
             </div>
         </header>
         <section data-role="content">
-            <h2>Your Profile</h2>
-            <h4>Profile Photo:</h4>
-            <img src="img/profilePic.jpg" id="imgProfilePic"><br>
+            <h2>Your Settings</h2>
             <label for="txtProfileGoal">Target Grade:</label>
             <input type="text" id="txtProfileGoal" name="txtProfileGoal" data-clear-btn="true">
             <button name="btnProfileSaveTarget" id="btnProfileSaveTarget" data-role="button">Save Target</button>
+            <br>
+            <button name="btnProfileRestoreDatabase" id="btnProfileRestoreDatabase" data-role="button"
+            >Restore Database</button>
+            <button name="btnProfileBackupDatabase" id="btnProfileBackupDatabase" data-role="button"
+                    >Backup Database</button>
+
             <br>
             <button name="btnProfileClearDatabase" id="btnProfileClearDatabase" data-role="button"
                 data-theme="b" style="background-color: red">Clear Database</button>
