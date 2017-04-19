@@ -24,12 +24,13 @@
     <!-- Home Page -->
     <div id="pageHome" data-role="page">
         <header data-role="header" data-theme="b" data-position="fixed">
-            <h1> Home Page </h1>
+            <h1> Home </h1>
             <div data-role="navbar">
                 <ul>
                     <li><a href="#pageHome" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
                     <li><a href="#pageProfile" data-icon="user">Profile</a></li>
+                    <li><a href="#pageAbout" data-icon="user">About</a></li>
                 </ul>
             </div>
         </header>
@@ -47,12 +48,13 @@
     <div id="pageGrades" data-role="page">
         <header data-role="header" data-theme="b" data-position="fixed">
             <a href="./" class="ui-btn ui-corner-all ui-btn-inline ui-mini footer-button-left ui-btn-icon-left ui-icon-back">Back</a>
-            <h1> Grades Page </h1>
+            <h1> Grades </h1>
             <div data-role="navbar">
                 <ul>
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid" class="ui-btn-active ui-state-persist">Grades</a></li>
                     <li><a href="#pageProfile" data-icon="user">Profile</a></li>
+                    <li><a href="#pageAbout" data-icon="user">About</a></li>
                 </ul>
             </div>
         </header>
@@ -79,6 +81,7 @@
                     <li><a href="#pageHome" data-icon="home">Home</a></li>
                     <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
                     <li><a href="#pageProfile" data-icon="user" class="ui-btn-active ui-state-persist">Profile</a></li>
+                    <li><a href="#pageAbout" data-icon="user">About</a></li>
                 </ul>
             </div>
         </header>
@@ -89,6 +92,35 @@
             <label for="txtProfileGoal">Target Grade</label>
             <input type="text" id="txtProfileGoal" name="txtProfileGoal"><br>
             <button name="btnProfileSaveTarget" id="btnProfileSaveTarget" data-role="button">Save Target</button>
+            <button name="btnClearData" id="btnClearData" data-role="button">Clear Database</button>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
+        </footer>
+    </div>
+    <!-- About Page -->
+    <div id="pageAbout" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <a href="./" class="ui-btn ui-corner-all ui-btn-inline ui-mini footer-button-left ui-btn-icon-left ui-icon-back">Back</a>
+            <h1> About the Creators </h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="grid">Grades</a></li>
+                    <li><a href="#pageProfile" data-icon="user">Profile</a></li>
+                    <li><a href="#pageAbout" data-icon="user" class="ui-btn-active ui-state-persist">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <br>
+            <img src="img/profilePic.jpg" id="imgProfilePicMargo">
+            <br><hr><br>
+            <p>Name: Margo Tavares</p>
+            <p>Program: 2nd Year Computer Programmer / Analyst</p>
+            <p>Github: <a href="https://github.com/MargoTavares">MargoTavares</a></p>
+
+            <img src="img/profilePic.jpg" id="imgProfilePicMatt">
 
         </section>
         <footer data-role="footer" data-theme="b" data-position="fixed">

@@ -117,3 +117,26 @@ button:hover {
     color: black;
     border: 2px solid grey;
 }
+
+#imgProfilePicMargo {
+    border-radius: 5px;
+    width: 50%;
+    height: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#imgProfilePicMatt {
+    border-radius: 5px;
+    width: 30%;
+    height: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.txtMargo {
+    color: white;
+    text-shadow: 2px 2px 2px dimgrey;
+}
