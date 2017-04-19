@@ -125,7 +125,7 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +
                 "</span></p>" +
                 "</li></a><br>";
-            calculateGrade(row.id, "spanCalculatedGrade" + row.id, "spanCalculatedSumGrade" + row.id, spanCalculatedGoal + row.id);
+            calculateGrade(row.id, "spanCalculatedGrade" + row.id, "spanCalculatedSumGrade" + row.id, "spanCalculatedGoal" + row.id);
         }
         courseHtmlCode += "</ul>" +
             "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId + " " +
@@ -230,7 +230,7 @@ function loadModifyCoursePage() {
 
     generateGradeHtmlByCourseId(courseId);
     function successSelectOne(tx, results) {
-        var row = results.rows[0];
+        var row = results.rows.item(0);
         $("#headerModifyCourseName").html(row.name);
         $("#txtModifyCourseName").val(row.name);
         if (row['isActive'] == 'true') {
@@ -249,7 +249,7 @@ function loadModifyCoursePage() {
 function loadModifyProgramPage() {
     var programId = localStorage.getItem("selectedProgramId");
     function successSelectOne(tx, results) {
-        var row = results.rows[0];
+        var row = results.rows.item(0);
         $("#txtModifyProgName").val(row.name);
         if (row['isActive'] == 'true') {
             $("#chkModifyProgIsActive").prop("checked", true).checkboxradio("refresh");
@@ -266,7 +266,7 @@ function loadModifyProgramPage() {
 function loadModifyGradePage() {
     var gradeId = localStorage.getItem("selectedGradeId");
     function successSelectOne(tx, results) {
-        var row = results.rows[0];
+        var row = results.rows.item(0);
         $("#txtModifyGradeName").val(row.name);
         $("#txtModifyGradeWeight").val(row.weight);
         $("#txtModifyGradeGrade").val(row.grade);
