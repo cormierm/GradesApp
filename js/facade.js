@@ -205,7 +205,7 @@ function populateSelectListPrograms(selectList, programId) {
         var htmlCode = "";
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
-            if (programId === row.id) {
+            if (programId == row.id) {
                 htmlCode += "<option value='" + row.id + "' selected>" + row.name
                     + "</option>";
             }
@@ -225,7 +225,7 @@ function populateSelectListCourses(selectList, courseId) {
         var htmlCode = "";
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
-            if (courseId === row.id){
+            if (courseId == row.id){
                 htmlCode += "<option value='" + row.id + "' selected>" + row.name
                     + "</option>";
             }
@@ -317,4 +317,12 @@ function calculateSumOfWeightsForModifyGrade() {
     }
     var options = [courseId];
     GradeDB.selectAllByCourse(successSelectAll, options);
+}
+
+function backupDatabase() {
+    UtilDB.backupDatabase();
+}
+
+function restoreDatabase() {
+    UtilDB.restoreDatabase();
 }

@@ -30,6 +30,15 @@ function btnProfileSaveTarget_click() {
     setTargetGrade();
 }
 
+function btnProfileRestoreDatabase_click() {
+    restoreDatabase();
+}
+
+function btnProfileBackupDatabase_click() {
+    backupDatabase();
+}
+
+
 function btnProfileClearDatabase_click() {
     clearDatabase();
 }
@@ -111,7 +120,7 @@ function pageModifyGrade_pageshow() {
 }
 
 function pageHome_pageshow() {
-    CalculateDB.selectAll();
+    UtilDB.calculateHomePageCourseAverage();
 }
 
 function pageProfile_pageshow() {
@@ -119,7 +128,7 @@ function pageProfile_pageshow() {
 }
 
 function init() {
-    CalculateDB.selectAll();
+    UtilDB.calculateHomePageCourseAverage();
 
     $("#btnHomeGrades").on("click", btnHomeGrades_click);
 
@@ -131,6 +140,8 @@ function init() {
     $("#chkGradesShowActive").on("change", chkGradesShowActive_change);
 
     $("#btnProfileSaveTarget").on("click", btnProfileSaveTarget_click);
+    $("#btnProfileRestoreDatabase").on("click", btnProfileRestoreDatabase_click);
+    $("#btnProfileBackupDatabase").on("click", btnProfileBackupDatabase_click);
     $("#btnProfileClearDatabase").on("click", btnProfileClearDatabase_click);
 
     $("#btnModifyCourseUpdate").on("click", btnModifyCourseUpdate_click);

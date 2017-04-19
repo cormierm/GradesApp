@@ -208,8 +208,10 @@ var GradeDB = {
     }
 };
 
-var CalculateDB = {
-    selectAll: function() {
+var dbBackup;
+
+var UtilDB = {
+    calculateHomePageCourseAverage: function() {
         function txFunction(tx) {
             var sql = "" +
                 "SELECT p.name AS pname, c.name AS cname, " +
@@ -240,5 +242,84 @@ var CalculateDB = {
             tx.executeSql(sql, options, successSelectAll, errorHandler);
         }
         db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    backupDatabase: function () {
+        function txFunction(tx) {
+            console.info("Creating Backup.");
+            var options = [];
+            dbBackup = [];
+            var sql = "SELECT * FROM program;";
+            function successProgramSelectAll(tx, results) {
+                dbBackup.push(JSON.stringify(results.rows));
+            }
+            tx.executeSql(sql, options, successProgramSelectAll, errorHandler);
+
+            sql = "SELECT * FROM course;";
+            function successCourseSelectAll(tx, results) {
+                dbBackup.push(JSON.stringify(results.rows));
+            }
+            tx.executeSql(sql, options, successCourseSelectAll, errorHandler);
+
+            sql = "SELECT * FROM grade;";
+            function successGradeSelectAll(tx, results) {
+                dbBackup.push(JSON.stringify(results.rows));
+                alert(JSON.stringify(dbBackup));
+                localStorage.setItem("backup", JSON.stringify(dbBackup));
+            }
+            tx.executeSql(sql, options, successGradeSelectAll, errorHandler);
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+    restoreDatabase: function () {
+        function txFunction(tx) {
+            console.info("Restoring Backup");
+            dbBackup = JSON.parse(localStorage.getItem("backup"));
+
+            var sql = "INSERT INTO program " +
+                "(id, name, isActive) " +
+                "VALUES (?, ?, ?);";
+            function successProgramInsert() {
+                console.info("WebSQL Success: Backup Inserted record into program");
+            }
+            var rows = JSON.parse(dbBackup[0]);
+            var rowCount = Object.keys(rows).length;
+            for (var i=0; i < rowCount; i++) {
+                console.info("Inserted program: " + rows[i].id + ":" + rows[i].name + ":" + rows[i].isActive);
+                var options = [rows[i].id, rows[i].name, rows[i].isActive];
+                tx.executeSql(sql, options, successProgramInsert, errorHandler);
+            }
+
+            sql = "INSERT INTO course " +
+                "(id, programId, name, isActive) " +
+                "VALUES (?, ?, ?, ?);";
+            function successCourseInsert() {
+                console.info("WebSQL Success: Backup Inserted record into course");
+            }
+            var courseRows = JSON.parse(dbBackup[1]);
+            var courseRowCount = Object.keys(courseRows).length;
+            for (var i=0; i < courseRowCount; i++) {
+                console.info("Inserted course: " + courseRows[i].id + ":" + courseRows[i].programId + ":" + courseRows[i].name + ":" +
+                    courseRows[i].isActive);
+                options = [courseRows[i].id, courseRows[i].programId, courseRows[i].name, courseRows[i].isActive];
+                tx.executeSql(sql, options, successCourseInsert, errorHandler);
+            }
+
+            sql = "INSERT INTO grade " +
+                "(id, courseId, name, weight, grade) " +
+                "VALUES (?, ?, ?, ?, ?);";
+            function successGradeInsert() {
+                console.info("WebSQL Success: Backup Inserted record into grade");
+            }
+            var gradeRows = JSON.parse(dbBackup[2]);
+            var gradeRowCount = Object.keys(gradeRows).length;
+            for (var i=0; i < gradeRowCount; i++) {
+                console.info("Inserted grade: " + gradeRows[i].id + ":" + gradeRows[i].courseId + ":" + gradeRows[i].name + ":" +
+                    gradeRows[i].weight + ":" + gradeRows[i].grade);
+                options = [gradeRows[i].id, gradeRows[i].courseId, gradeRows[i].name, gradeRows[i].weight, gradeRows[i].grade];
+                tx.executeSql(sql, options, successGradeInsert, errorHandler);
+            }
+        }
+        db.transaction(txFunction, errorHandler, successTransaction);
     }
+
 };
