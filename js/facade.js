@@ -129,7 +129,7 @@ function generateCourseHtmlByProgramId(programName, programId){
         }
         courseHtmlCode += "</ul>" +
             "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId + " " +
-            "data-iconpos='left' class='btnGradesAddCourse'>Add Course</button>" +
+            "data-iconpos='left' class='btnGradesAddCourse ui-btn ui-icon-plus ui-btn-icon-left ui-shadow ui-corner-all'>Add Course</button>" +
             "<br>";
 
         var listGrades = $("#lstGrades");
