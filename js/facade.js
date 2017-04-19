@@ -110,12 +110,9 @@ function generateGradesList() {
 }
 
 function generateCourseHtmlByProgramId(programName, programId){
-    var courseHtmlCode = "<a class='programListItem' data-row-id=" + programId + " href='#'>" +
-        "<h3>" + programName + "</h3></a>" +
-        "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId +
-        " data-iconpos='left' class='btnGradesAddCourse'>Add Course</button>" +
-        "<button data-role='button' data-icon='gear' data-inline='true' data-row-id=" + programId +
-        " data-iconpos='left' class='btnGradesEditProgram'>Edit Program</button>";
+    var courseHtmlCode = "<br>" + "<h3>" +
+        programName + "<a class='programListItem' data-row-id=" + programId + " href='#'>" + "<button data-role='button' data-icon='gear' data-inline='true' data-row-id=" + programId +
+        " data-iconpos='left' class='btnGradesEditProgram'><img src='img/btnEdit.jpg' height='15px' width='15px'></button>" + "</h3></a>";
     function successSelectAllCoursesByProgramId(tx, results) {
         courseHtmlCode += "<ul data-role='listview' id='lstProgram" + programId + "'>";
         for (var i=0; i < results.rows.length; i++) {
@@ -127,10 +124,13 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "Sum of Grades: <span id='spanCalculatedSumGrade"+ row['id'] + "'></span>%<br>" +
                 "Required grades to reach target: <span id='spanCalculatedGoal'></span>%" +
                 "</span></p>" +
-                "</li></a>";
+                "</li></a><br>";
             calculateGrade(row['id'], "spanCalculatedGrade" + row['id'], "spanCalculatedSumGrade" + row['id']);
         }
-        courseHtmlCode += "</ul>";
+        courseHtmlCode += "</ul>" +
+            "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId + " " +
+            "data-iconpos='left' class='btnGradesAddCourse'>Add Course</button>" +
+            "<br>";
 
         var listGrades = $("#lstGrades");
         listGrades.html(listGrades.html() + courseHtmlCode);
