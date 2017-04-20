@@ -328,7 +328,7 @@ function restoreDatabase() {
     var size = 5*1024*1024;
     window.requestFileSystem(type, size, successCallback, errorCallback);
     function successCallback(fs) {
-        fs.root.getFile('grade.db', {}, function(fileEntry) {
+        fs.root.getFile($("#txtSettingsFilename").val(), {}, function(fileEntry) {
             fileEntry.file(function(file) {
                 var reader = new FileReader();
                 reader.onloadend = function(e) {
@@ -340,6 +340,29 @@ function restoreDatabase() {
         }, errorCallback);
     }
     function errorCallback(error) {
-        alert("ERROR: " + error.code)
+        alert("File Error: " + error.code)
+    }
+}
+
+function writeDatabaseToFile() {
+    var type = window.TEMPORARY;
+    var size = 5*1024*1024;
+    window.requestFileSystem(type, size, successCallback, errorCallback);
+    function successCallback(fs) {
+        fs.root.getFile($("#txtSettingsFilename").val(), {create: true}, function(fileEntry) {
+            fileEntry.createWriter(function(fileWriter) {
+                fileWriter.onwriteend = function(e) {
+                    alert("Databases successfully saved to " + $("#txtSettingsFilename").val());
+                };
+                fileWriter.onerror = function(e) {
+                    alert("Error Writing to File: " + e.toString());
+                };
+                var blob = new Blob([JSON.stringify(dbBackup)], {type: 'text/plain'});
+                fileWriter.write(blob);
+            }, errorCallback);
+        }, errorCallback);
+    }
+    function errorCallback(error) {
+        alert("File Error: " + error.code)
     }
 }
