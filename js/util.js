@@ -104,7 +104,7 @@ function doValidate_frmAddGrade() {
         },
         messages: {
             selAddGradeCourses: {
-              required: "Please select course name"
+                required: "Please select course name"
             },
             txtAddGradeName: {
                 required: "Grade name is required",
@@ -153,7 +153,7 @@ function doValidate_frmModifyCourse() {
     form.validate({
         rules: {
             selModifyCoursePrograms: {
-              required: true
+                required: true
             },
             txtModifyCourseName: {
                 required: true,
@@ -230,3 +230,26 @@ jQuery.validator.addMethod("weightcheck",
         return this.optional(element) || (value + sumOfWeights) <= 100;
     },
     "Total Weight for course cannot exceed 100.");
+
+function writeDataBaseToFile() {
+    var type = window.TEMPORARY;
+    var size = 5*1024*1024;
+    window.requestFileSystem(type, size, successCallback, errorCallback);
+    function successCallback(fs) {
+        fs.root.getFile('grade.db', {create: true}, function(fileEntry) {
+            fileEntry.createWriter(function(fileWriter) {
+                fileWriter.onwriteend = function(e) {
+                    alert('Write completed.');
+                };
+                fileWriter.onerror = function(e) {
+                    alert('Write failed: ' + e.toString());
+                };
+                var blob = new Blob([JSON.stringify(dbBackup)], {type: 'text/plain'});
+                fileWriter.write(blob);
+            }, errorCallback);
+        }, errorCallback);
+    }
+    function errorCallback(error) {
+        alert("ERROR: " + error.code)
+    }
+}

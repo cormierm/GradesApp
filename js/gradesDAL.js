@@ -277,6 +277,7 @@ var UtilDB = {
                 }
                 dbBackup.push(JSON.stringify(temp));
                 localStorage.setItem("backup", JSON.stringify(dbBackup));
+                writeDataBaseToFile(JSON.stringify(dbBackup));
                 alert("Database Saved.");
             }
             tx.executeSql(sql, options, successGradeSelectAll, errorHandler);
@@ -286,7 +287,7 @@ var UtilDB = {
     restoreDatabase: function () {
         function txFunction(tx) {
             console.info("Restoring Backup");
-            dbBackup = JSON.parse(localStorage.getItem("backup"));
+            //dbBackup = JSON.parse(localStorage.getItem("backup"));
 
             var sql = "INSERT INTO program " +
                 "(id, name, isActive) " +

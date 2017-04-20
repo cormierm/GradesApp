@@ -142,10 +142,10 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "<p>" +
                 "<span class='spanGradeHeader'>" + row.name + "</span><br>" +
                 "<span class='spanGradeMain' id='spanGradeStats"+ row.id + "'>" +
-                    "Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>% " +
-                    "Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%<br>" +
-                    "Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%<br>" +
-                    "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +
+                "Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>% " +
+                "Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%<br>" +
+                "Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%<br>" +
+                "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +
                 "</span>" +
                 "</p>" +
                 "</li></a><br>";
@@ -324,5 +324,22 @@ function backupDatabase() {
 }
 
 function restoreDatabase() {
-    UtilDB.restoreDatabase();
+    var type = window.TEMPORARY;
+    var size = 5*1024*1024;
+    window.requestFileSystem(type, size, successCallback, errorCallback);
+    function successCallback(fs) {
+        fs.root.getFile('grade.db', {}, function(fileEntry) {
+            fileEntry.file(function(file) {
+                var reader = new FileReader();
+                reader.onloadend = function(e) {
+                    dbBackup = JSON.parse(this.result);
+                    UtilDB.restoreDatabase();
+                };
+                reader.readAsText(file);
+            }, errorCallback);
+        }, errorCallback);
+    }
+    function errorCallback(error) {
+        alert("ERROR: " + error.code)
+    }
 }
