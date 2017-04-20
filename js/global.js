@@ -123,7 +123,7 @@ function pageHome_pageshow() {
     UtilDB.calculateHomePageCourseAverage();
 }
 
-function pageProfile_pageshow() {
+function pageSettings_pageshow() {
     $("#txtProfileGoal").val(localStorage.getItem("targetGrade"));
 }
 
@@ -163,13 +163,13 @@ function init() {
     $("#pageModifyProgram").on("pageshow", pageModifyProgram_pageshow);
     $("#pageModifyGrade").on("pageshow", pageModifyGrade_pageshow);
     $("#pageHome").on("pageshow", pageHome_pageshow);
-    $("#pageProfile").on("pageshow", pageProfile_pageshow);
+    $("#pageSettings").on("pageshow", pageSettings_pageshow);
 
     if(localStorage.getItem("showIsActiveOnly") === null){
         localStorage.setItem("showIsActiveOnly", false);
     }
     if(localStorage.getItem("targetGrade") === null){
-        localStorage.setItem("targetGrade", 100);
+        localStorage.setItem("targetGrade", 90);
     }
 }
 

@@ -320,27 +320,45 @@ function calculateSumOfWeightsForModifyGrade() {
 }
 
 function backupDatabase() {
-    UtilDB.backupDatabase();
+    var result = confirm("Are you sure you want to backup the database to " +
+        $("#txtSettingsFilename").val() + "?");
+    try {
+        if (result) {
+            UtilDB.backupDatabase();
+        }
+    } catch (e) {
+        alert("Error Backing up Database: " + e);
+    }
 }
 
 function restoreDatabase() {
-    var type = window.TEMPORARY;
-    var size = 5*1024*1024;
-    window.requestFileSystem(type, size, successCallback, errorCallback);
-    function successCallback(fs) {
-        fs.root.getFile($("#txtSettingsFilename").val(), {}, function(fileEntry) {
-            fileEntry.file(function(file) {
-                var reader = new FileReader();
-                reader.onloadend = function(e) {
-                    dbBackup = JSON.parse(this.result);
-                    UtilDB.restoreDatabase();
-                };
-                reader.readAsText(file);
-            }, errorCallback);
-        }, errorCallback);
-    }
-    function errorCallback(error) {
-        alert("File Error: " + error.code)
+    var result = confirm("Are you sure you want to restore the database from " +
+        $("#txtSettingsFilename").val() + "? All current data will be lost!");
+    try {
+        if (result) {
+            DB.dropTables();
+            DB.createTables();
+            var type = window.TEMPORARY;
+            var size = 5*1024*1024;
+            window.requestFileSystem(type, size, successCallback, errorCallback);
+            function successCallback(fs) {
+                fs.root.getFile($("#txtSettingsFilename").val(), {}, function(fileEntry) {
+                    fileEntry.file(function(file) {
+                        var reader = new FileReader();
+                        reader.onloadend = function(e) {
+                            dbBackup = JSON.parse(this.result);
+                            UtilDB.restoreDatabase();
+                        };
+                        reader.readAsText(file);
+                    }, errorCallback);
+                }, errorCallback);
+            }
+            function errorCallback(error) {
+                alert("File Error: " + error.code)
+            }
+        }
+    } catch (e) {
+        alert("Error Backing up Database: " + e);
     }
 }
 
