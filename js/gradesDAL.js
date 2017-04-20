@@ -249,22 +249,35 @@ var UtilDB = {
             var options = [];
             dbBackup = [];
             var sql = "SELECT * FROM program;";
+            var temp = [];
             function successProgramSelectAll(tx, results) {
-                dbBackup.push(JSON.stringify(results.rows));
+                for (var i=0; i < results.rows.length; i++) {
+                    temp.push(results.rows.item(i));
+                }
+                dbBackup.push(JSON.stringify(temp));
             }
             tx.executeSql(sql, options, successProgramSelectAll, errorHandler);
 
             sql = "SELECT * FROM course;";
             function successCourseSelectAll(tx, results) {
-                dbBackup.push(JSON.stringify(results.rows));
+                temp = [];
+                for (var i=0; i < results.rows.length; i++) {
+                    temp.push(results.rows.item(i));
+                }
+                dbBackup.push(JSON.stringify(temp));
+
             }
             tx.executeSql(sql, options, successCourseSelectAll, errorHandler);
 
             sql = "SELECT * FROM grade;";
             function successGradeSelectAll(tx, results) {
-                dbBackup.push(JSON.stringify(results.rows));
-                alert(JSON.stringify(dbBackup));
+                temp = [];
+                for (var i=0; i < results.rows.length; i++) {
+                    temp.push(results.rows.item(i));
+                }
+                dbBackup.push(JSON.stringify(temp));
                 localStorage.setItem("backup", JSON.stringify(dbBackup));
+                alert("Database Saved.");
             }
             tx.executeSql(sql, options, successGradeSelectAll, errorHandler);
         }
@@ -318,6 +331,7 @@ var UtilDB = {
                 options = [gradeRows[i].id, gradeRows[i].courseId, gradeRows[i].name, gradeRows[i].weight, gradeRows[i].grade];
                 tx.executeSql(sql, options, successGradeInsert, errorHandler);
             }
+            alert("Database Restored.");
         }
         db.transaction(txFunction, errorHandler, successTransaction);
     }
