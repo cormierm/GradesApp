@@ -180,21 +180,33 @@ function generateCourseHtmlByProgramId(programName, programId){
 }
 
 function generateGradeHtmlByCourseId(courseId){
-    var gradeHtmlCode = "<li role='header' data-type='list-divider' class='ui-li ui-li-divider'>Grades Listing</li>";
+
     function successSelectAllCoursesByCourseId(tx, results) {
-        for (var i=0; i < results.rows.length; i++) {
-            var row = results.rows.item(i);
-            gradeHtmlCode += "<li data-iconshadow='true'><a class='gradeListItem' data-row-id=" + row.id + " href='#'>" +
-                row.name + " Weight: " + row.weight + " Grade: " + row.grade + "</a></li>";
+        var rowCount = results.rows.length;
+        if (rowCount > 0) {
+            var gradeHtmlCode = "<li role='header' data-type='list-divider' class='ui-li ui-li-divider'>Grades Listing</li>";
+            var totalWeights = 0;
+            var totalGrades = 0;
+            for (var i=0; i < results.rows.length; i++) {
+                var row = results.rows.item(i);
+                gradeHtmlCode += "<li data-iconshadow='true'><a class='gradeListItem' data-row-id=" + row.id + " href='#'>" +
+                    row.name + " Weight: " + row.weight + " Grade: " + row.grade + "</a></li>";
+                totalWeights += row.weight;
+                totalGrades += row.grade;
+            }
+            var averageGrade = totalGrades / rowCount;
+            gradeHtmlCode += "<li role='footer' data-type='list-divider' class='ui-li ui-li-divider'>" +
+                "Total Weights: " + row.weight.toFixed(2) + "&nbsp; Average Grade: " + averageGrade + "%</li>";
+            var list = $("#courseGradeList");
+            list.html(gradeHtmlCode);
+            list.listview("refresh");
+            function clickGradeHandler() {
+                localStorage.setItem("selectedGradeId", $(this).attr("data-row-id"));
+                $(location).prop('href', "#pageModifyGrade");
+            }
+            $(".gradeListItem").on("click", clickGradeHandler);
         }
-        var list = $("#courseGradeList");
-        list.html(gradeHtmlCode);
-        list.listview("refresh");
-        function clickGradeHandler() {
-            localStorage.setItem("selectedGradeId", $(this).attr("data-row-id"));
-            $(location).prop('href', "#pageModifyGrade");
-        }
-        $(".gradeListItem").on("click", clickGradeHandler);
+
     }
     var options = [courseId];
     GradeDB.selectAllByCourse(successSelectAllCoursesByCourseId, options);
