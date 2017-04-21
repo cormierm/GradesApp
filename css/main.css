@@ -80,7 +80,8 @@ textarea.error {
 .spanGradeHeader {
     font-size: 1.1em;
     color: white;
-    text-shadow: 1px 2px 1px black;
+    text-shadow: -1px 0 black, 0 1px black,
+    1px 0 black, 0 -1px black;
 }
 .spanGradeMain {
     font-size: .8em;
