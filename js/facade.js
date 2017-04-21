@@ -142,11 +142,11 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "<p>" +
                 "<span class='spanGradeHeader'>" + row.name + "</span><br>" +
                 "<span class='spanGradeMain' id='spanGradeStats"+ row.id + "'>" +
-                "Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>%<br> " +
-                "Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%<br>" +
-                "Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%<br>" +
-                "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +
-                "</span>" +
+                "<span class='spanAG'>Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>%</span> " +
+                "<span class='spanCP'>Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%</span><br>" +
+                "<span class='spanCG'>Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%</span>" +
+                "<span class='spanRG'>Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%</span><br>" +
+                "<br></span>" +
                 "</p>" +
                 "</li></a><br>";
             calculateGrade(row.id);
