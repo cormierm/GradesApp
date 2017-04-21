@@ -180,11 +180,11 @@ function generateCourseHtmlByProgramId(programName, programId){
 }
 
 function generateGradeHtmlByCourseId(courseId){
-    var gradeHtmlCode = "<li role='header' data-type='list-divider'>Grades List</li>";
+    var gradeHtmlCode = "<li role='header' data-type='list-divider' class='ui-li ui-li-divider'>Grades Listing</li>";
     function successSelectAllCoursesByCourseId(tx, results) {
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
-            gradeHtmlCode += "<li><a class='gradeListItem' data-row-id=" + row.id + " href='#'>" +
+            gradeHtmlCode += "<li data-iconshadow='true'><a class='gradeListItem' data-row-id=" + row.id + " href='#'>" +
                 row.name + " Weight: " + row.weight + " Grade: " + row.grade + "</a></li>";
         }
         var list = $("#courseGradeList");
