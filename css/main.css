@@ -87,7 +87,7 @@ textarea.error {
     padding: 0;
     margin: 0;
     color: white;
-    text-shadow: 2px 2px 2px dimgrey;
+    text-shadow: 1px 1px 1px black;
 }
 #lstGrades a {
     color: black;
@@ -103,7 +103,7 @@ textarea.error {
     text-decoration: none;
     border-radius: 5px;
     border: 1px solid gray;
-    background-color: slategrey;
+    background-color: rgba(130,130,130,0.5);
     margin: 0 2px;
     padding: 0 10px;
 }
@@ -122,6 +122,55 @@ textarea.error {
     margin-left: 0.5em;
     background-color: #FFFFFF;
 }
+
+.spanAG {
+    display: inline-block;
+    float: left;
+    width: 47%;
+    background-color: slategrey;
+    border: 1px solid #1d1d1d;
+    border-radius: 2px;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    padding-left: 0.5em;
+}
+
+.spanCP {
+    display: inline-block;
+    float: right;
+    width: 47%;
+    background-color: slategrey;
+    border: 1px solid #1d1d1d;
+    border-radius: 2px;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    padding-left: 0.5em;
+}
+
+.spanCG {
+    display: inline-block;
+    float: left;
+    width: 47%;
+    background-color: slategrey;
+    border: 1px solid #1d1d1d;
+    border-radius: 2px;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    padding-left: 0.5em;
+}
+
+.spanRG {
+    display: inline-block;
+    float: right;
+    width: 47%;
+    background-color: slategrey;
+    border: 1px solid #1d1d1d;
+    border-radius: 2px;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    padding-left: 0.5em;
+}
+
 /* Grades Page Settings End*/
 
 /* About Page Css */
