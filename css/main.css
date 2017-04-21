@@ -1,6 +1,29 @@
+body {
+    background: whitesmoke;
+    background-repeat:repeat-y;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:100% 100%;
+}
+.ui-page {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+
+/* Title Css */
 h1, h2, h3, h4, p, label {
+    color: #1b1d21;
+}
+
+h1#homePageTitle{
+    color: #1b1d21;
+    text-shadow: none;
+}
+
+h1.ui-title {
     color: white;
-    text-shadow: 2px 2px 8px dimgrey;
 }
 
 .programListItem {
@@ -13,8 +36,34 @@ h1, h2, h3, h4, p, label {
     text-align: center;
     padding: 0;
     margin: 0;
+    color: #1b1d21;
 }
 
+#gradeAverageTitle {
+    font-size: 30vw;
+    text-align: center;
+    color: #1b1d21;
+    font-family: "Arial", Georgia, sans-serif;
+    background-color: rgba(219,255,255,0.5);
+    border-radius: 20px;
+}
+
+#homePageTitle {
+    font-size: 8vw;
+    text-align: center;
+    color: #1b1d21;
+    font-family: "Arial", Georgia, sans-serif;
+}
+
+#subTitleGrade {
+    font-size: 4vw;
+    text-align: center;
+    color: #1b1d21;
+    font-family: "Arial", Georgia, sans-serif;
+}
+/* Title Css End*/
+
+/* Error Messages */
 label.error{
     color: #F00;
     font-weight: bold;
@@ -25,15 +74,20 @@ select.error,
 textarea.error {
     border: 1px red solid;
 }
+/* Error Messages End*/
+
+/* Grades Page Settings */
 .spanGradeHeader {
     font-size: 1.1em;
+    color: white;
+    text-shadow: 1px 2px 1px black;
 }
 .spanGradeMain {
     font-size: .8em;
     padding: 0;
     margin: 0;
     color: white;
-    text-shadow: 2px 2px 8px dimgrey;
+    text-shadow: 2px 2px 2px dimgrey;
 }
 #lstGrades a {
     color: black;
@@ -49,7 +103,7 @@ textarea.error {
     text-decoration: none;
     border-radius: 5px;
     border: 1px solid gray;
-    background-color: #454545;
+    background-color: slategrey;
     margin: 0 2px;
     padding: 0 10px;
 }
@@ -62,62 +116,20 @@ textarea.error {
     margin-bottom: 10px;
 }
 
-#gradeAverageTitle {
-    font-size: 30vw;
-    text-align: center;
-    color: white;
-    font-family: "Arial", Georgia, sans-serif;
-    text-shadow: 2px 2px 8px dimgray;
-}
-
-#homePageTitle {
-    font-size: 8vw;
-    text-align: center;
-    color: white;
-    font-family: "Arial", Georgia, sans-serif;
-    text-shadow: 2px 2px 8px dimgray;
-}
-
-#subTitleGrade {
-    font-size: 4vw;
-    text-align: center;
-    color: white;
-    font-family: "Arial", Georgia, sans-serif;
-    text-shadow: 2px 2px 8px dimgray;
-}
-
-body {
-    background: url(../img/chalkboard.jpg);
-    background-repeat:repeat-y;
-    background-position:center center;
-    background-attachment:scroll;
-    background-size:100% 100%;
-}
-.ui-page {
-    background: transparent;
-}
-.ui-content{
-    background: transparent;
-}
-
-#imgProfilePic {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-}
-
 .btnGradesEditProgram {
     border: 1px solid grey;
     border-radius: 5px;
     margin-left: 0.5em;
     background-color: #FFFFFF;
 }
+/* Grades Page Settings End*/
 
-button:hover {
-    background-color: #FFFFFF;
-    color: black;
-    border: 2px solid grey;
+/* About Page Css */
+#imgProfilePic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
 }
 
 #imgProfilePicMargo {
@@ -158,7 +170,5 @@ button:hover {
 .floatRight {
     float: right;
 }
+/* About Page Css End */
 
-.navBarBack{
-    background-color: #0B313A;
-}

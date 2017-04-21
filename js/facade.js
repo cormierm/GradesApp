@@ -142,7 +142,7 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "<p>" +
                 "<span class='spanGradeHeader'>" + row.name + "</span><br>" +
                 "<span class='spanGradeMain' id='spanGradeStats"+ row.id + "'>" +
-                "Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>% " +
+                "Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>%<br> " +
                 "Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%<br>" +
                 "Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%<br>" +
                 "Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%" +
@@ -153,8 +153,8 @@ function generateCourseHtmlByProgramId(programName, programId){
         }
         courseHtmlCode += "</ul>" +
             "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId + " " +
-            "data-iconpos='left' class='btnGradesAddCourse ui-btn ui-icon-plus ui-btn-icon-left ui-shadow ui-corner-all'>Add Course</button>" +
-            "<br>";
+            "data-iconpos='left' class='btnGradesAddCourse ui-btn ui-icon-plus ui-btn-icon-left " +
+            "ui-shadow ui-corner-all'>Add Course</button>";
         var listGrades = $("#lstGrades");
         listGrades.html(listGrades.html() + courseHtmlCode);
 
