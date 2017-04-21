@@ -133,6 +133,7 @@ textarea.error {
 }
 
 #imgProfilePicMargo {
+    border: 2px solid slategray;
     border-radius: 5px;
     width: 50%;
     height: 20%;
@@ -142,6 +143,7 @@ textarea.error {
 }
 
 #imgProfilePicMatt {
+    border: 2px solid slategray;
     border-radius: 5px;
     width: 50%;
     height: 20%;
@@ -151,15 +153,19 @@ textarea.error {
     background: lightgray;
 }
 
-.txtMargo {
-    color: white;
-    text-shadow: 2px 2px 2px dimgrey;
+#margoSection {
+    background-color: rgba(219,255,255,0.5);
+    text-align: center;
+}
+
+#mattSection {
+    background-color: rgba(219,255,255,0.5);
+    text-align: center;
 }
 
 .btnGitHub {
     width: 100%;
     height: 20px;
-    text-align: center;
 }
 
 #lblShowActive {
