@@ -138,7 +138,7 @@ function generateCourseHtmlByProgramId(programName, programId){
         courseHtmlCode += "<ul data-role='listview' id='lstProgram" + programId + "'>";
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
-            courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row.id + " href='#'><li>" +
+            courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row.id + " href='#'><li class='liGrades'>" +
                 "<p>" +
                 "<span class='spanGradeHeader'>" + row.name + "</span><br>" +
                 "<span class='spanGradeMain' id='spanGradeStats"+ row.id + "'>" +
@@ -148,7 +148,7 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "<span class='spanRG'>Required grades to reach target: <span id='spanCalculatedGoal"+ row.id + "'></span>%</span><br>" +
                 "<br></span>" +
                 "</p>" +
-                "</li></a><br>";
+                "</li></a>";
             calculateGrade(row.id);
         }
         courseHtmlCode += "</ul>" +
