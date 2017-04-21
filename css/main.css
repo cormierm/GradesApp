@@ -133,6 +133,7 @@ textarea.error {
     padding-bottom: 0.2em;
     padding-top: 0.2em;
     padding-left: 0.5em;
+    margin-top: 0.2em;
 }
 
 .spanCP {
@@ -145,6 +146,7 @@ textarea.error {
     padding-bottom: 0.2em;
     padding-top: 0.2em;
     padding-left: 0.5em;
+    margin-top: 0.2em;
 }
 
 .spanCG {
@@ -157,6 +159,7 @@ textarea.error {
     padding-bottom: 0.2em;
     padding-top: 0.2em;
     padding-left: 0.5em;
+    margin-top: 0.2em;
 }
 
 .spanRG {
@@ -169,6 +172,7 @@ textarea.error {
     padding-bottom: 0.2em;
     padding-top: 0.2em;
     padding-left: 0.5em;
+    margin-top: 0.2em;
 }
 
 /* Grades Page Settings End*/
