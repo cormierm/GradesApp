@@ -180,7 +180,7 @@ function generateCourseHtmlByProgramId(programName, programId){
 }
 
 function generateGradeHtmlByCourseId(courseId){
-    var gradeHtmlCode = "";
+    var gradeHtmlCode = "<li role='header' data-type='list-divider'>Grades List</li>";
     function successSelectAllCoursesByCourseId(tx, results) {
         for (var i=0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
