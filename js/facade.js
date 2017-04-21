@@ -196,7 +196,7 @@ function generateGradeHtmlByCourseId(courseId){
             }
             var averageGrade = totalGrades / rowCount;
             gradeHtmlCode += "<li role='footer' data-type='list-divider' class='ui-li ui-li-divider'>" +
-                "Total Weights: " + row.weight.toFixed(2) + "&nbsp; Average Grade: " + averageGrade.toFixed(2) + "%</li>";
+                "Total Weights: " + totalWeights.toFixed(2) + "&nbsp; Average Grade: " + averageGrade.toFixed(2) + "%</li>";
             var list = $("#courseGradeList");
             list.html(gradeHtmlCode);
             list.listview("refresh");
