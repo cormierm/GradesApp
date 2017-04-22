@@ -79,17 +79,17 @@ textarea.error {
 /* Grades Page Settings */
 .spanGradeHeader {
     font-size: 1.1em;
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black,
-    1px 0 black, 0 -1px black;
-    background-color: rgba(130,130,130,1);
+    color: black;
+    background-color: rgb(168, 168, 168);
+    text-shadow: 1px 1px 1px #c4c4c4;
+    border-radius: 3px 3px 0 0;
+    padding: 1px 5px;
 }
 .spanGradeMain {
     font-size: .8em;
     padding: 0;
     margin: 0;
-    color: white;
-    text-shadow: 1px 1px 1px black;
+    color: black;
 }
 
 #lstGrades a {
@@ -101,13 +101,14 @@ textarea.error {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    background-color: rgba(130,130,130,0.5);
-    border-radius: 10px;
+    border-radius: 5px;
 }
 #lstGrades ul li {
+    border: 2px solid #d8d8d8;
+    border-radius: 5px;
     text-decoration: none;
-    padding: 0 10px;
-    margin-bottom: 0.2em;
+    margin-bottom: 5px;
+    box-shadow: 3px 3px 3px grey;
 }
 
 #lstGrades ul li a {
@@ -115,7 +116,7 @@ textarea.error {
 }
 
 .liGrades {
-    margin-top: -17px;
+    margin: 0;
 }
 
 #courseGradeList {
@@ -134,7 +135,6 @@ textarea.error {
     float: left;
     width: 48%;
     padding-left: 0.5em;
-    margin-top: 0.2em;
 }
 
 .spanCP {
@@ -142,7 +142,6 @@ textarea.error {
     float: right;
     width: 48%;
     padding-left: 0.5em;
-    margin-top: 0.2em;
 }
 
 .spanCG {
@@ -150,7 +149,6 @@ textarea.error {
     float: left;
     width: 48%;
     padding-left: 0.5em;
-    margin-top: 0.2em;
 }
 
 .spanRG {
@@ -158,7 +156,6 @@ textarea.error {
     float: right;
     width: 48%;
     padding-left: 0.5em;
-    margin-top: 0.2em;
 }
 
 /* Grades Page Settings End*/
