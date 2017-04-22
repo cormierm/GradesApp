@@ -20,10 +20,10 @@ function calculateGrade(courseId){
             var totalAverageGrade = totalGrades / (totalWeights / 100);
             var targetGoal = parseFloat(localStorage.getItem("targetGrade"));
             var goal = (targetGoal - totalGrades) / ((100 - totalWeights) / 100);
-            $("#spanAverageGrade" + courseId).html(totalAverageGrade.toFixed(2));
-            $("#spanCurrentProgress" + courseId).html(totalWeights.toFixed(2));
-            $("#spanCurrentGradesTotal" + courseId).html(totalGrades.toFixed(2));
-            $("#spanCalculatedGoal" + courseId).html(goal.toFixed(2));
+            $("#spanAverageGrade" + courseId).html(totalAverageGrade.toFixed(1));
+            $("#spanCurrentProgress" + courseId).html(totalWeights.toFixed(1));
+            $("#spanCurrentGradesTotal" + courseId).html(totalGrades.toFixed(1));
+            $("#spanCalculatedGoal" + courseId).html(goal.toFixed(1));
         }
     }
     var options = [courseId];

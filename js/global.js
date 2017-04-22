@@ -8,10 +8,18 @@ function btnHomeGrades_click(){
     $(location).prop('href', "#pageGrades");
 }
 
+function btnHomeAbout_click() {
+    $(location).prop('href', "#pageAbout");
+}
+
 function btnAddProgAdd_click() {
     if(doValidate_frmAddProg()) {
         addProgram();
     }
+}
+
+function btnAddProgCancel_click() {
+    $(location).prop('href', "#pageGrades");
 }
 
 function btnAddCourseAdd_click() {
@@ -20,10 +28,18 @@ function btnAddCourseAdd_click() {
     }
 }
 
+function btnAddCourseCancel_click() {
+    $(location).prop('href', "#pageGrades");
+}
+
 function btnAddGradeAdd_click() {
     if(doValidate_frmAddGrade()){
         addGrade();
     }
+}
+
+function btnAddGradeCancel_click() {
+    $(location).prop('href', "#pageModifyCourse");
 }
 
 function btnProfileSaveTarget_click() {
@@ -80,6 +96,10 @@ function btnModifyProgUpdate_click() {
     }
 }
 
+function btnModifyProgCancel_click() {
+    $(location).prop('href', "#pageGrades");
+}
+
 function btnModifyProgDelete_click() {
     deleteProgram();
 }
@@ -88,6 +108,10 @@ function btnModifyGradeUpdate_click() {
     if(doValidate_frmModifyGrade()){
         updateGrade();
     }
+}
+
+function btnModifyGradeCancel_click() {
+    $(location).prop('href', "#pageModifyCourse");
 }
 
 function btnModifyGradeDelete_click() {
@@ -131,10 +155,14 @@ function init() {
     UtilDB.calculateHomePageCourseAverage();
 
     $("#btnHomeGrades").on("click", btnHomeGrades_click);
+    $("#btnHomeAbout").on("click", btnHomeAbout_click);
 
     $("#btnAddProgAdd").on("click", btnAddProgAdd_click);
+    $("#btnAddProgCancel").on("click", btnAddProgCancel_click);
     $("#btnAddCourseAdd").on("click", btnAddCourseAdd_click);
+    $("#btnAddCourseCancel").on("click", btnAddCourseCancel_click);
     $("#btnAddGradeAdd").on("click", btnAddGradeAdd_click);
+    $("#btnAddGradeCancel").on("click", btnAddGradeCancel_click);
 
     $("#btnGradesAddNewProgram").on("click", btnGradesAddNewProgram_click);
     $("#chkGradesShowActive").on("change", chkGradesShowActive_change);
@@ -151,9 +179,11 @@ function init() {
     $("#btnModifyCourseCancel").on("click", btnModifyCourseCancel_click);
 
     $("#btnModifyProgUpdate").on("click", btnModifyProgUpdate_click);
+    $("#btnModifyProgCancel").on("click", btnModifyProgCancel_click);
     $("#btnModifyProgDelete").on("click", btnModifyProgDelete_click);
 
     $("#btnModifyGradeUpdate").on("click", btnModifyGradeUpdate_click);
+    $("#btnModifyGradeCancel").on("click", btnModifyGradeCancel_click);
     $("#btnModifyGradeDelete").on("click", btnModifyGradeDelete_click);
 
     $("#pageAddCourse").on("pageshow", pageAddCourse_pageshow);

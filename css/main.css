@@ -1,3 +1,10 @@
+header {
+    background-color: rgba(26,94,180,0.8);
+}
+
+footer {
+    background-color: rgba(26,94,180,0.8);
+}
 body {
     background: whitesmoke;
     background-repeat:repeat-y;
@@ -44,7 +51,7 @@ h1.ui-title {
     text-align: center;
     color: #1b1d21;
     font-family: "Arial", Georgia, sans-serif;
-    background-color: rgba(219,255,255,0.5);
+    background-color: rgba(216, 224, 227, 0.3);
     border-radius: 20px;
 }
 
@@ -84,11 +91,10 @@ textarea.error {
     text-shadow: 1px 1px 1px #c4c4c4;
     border-radius: 3px 3px 0 0;
     padding: 1px 5px;
+    margin-bottom: -0.7em;
 }
 .spanGradeMain {
     font-size: .8em;
-    padding: 0;
-    margin: 0;
     color: black;
 }
 
@@ -113,14 +119,7 @@ textarea.error {
 
 #lstGrades ul li a {
     text-decoration: none;
-}
-
-.liGrades {
-    margin: 0;
-}
-
-#courseGradeList {
-    margin-bottom: 0;
+    margin-top: -3em;
 }
 
 .btnGradesEditProgram {
@@ -190,12 +189,12 @@ textarea.error {
 }
 
 #margoSection {
-    background-color: rgba(219,255,255,0.5);
+    background-color: rgba(216, 224, 227, 0.3);
     text-align: center;
 }
 
 #mattSection {
-    background-color: rgba(219,255,255,0.5);
+    background-color: rgba(216, 224, 227, 0.3);
     text-align: center;
 }
 
@@ -214,3 +213,12 @@ textarea.error {
 }
 /* About Page Css End */
 
+/*  Css Title */
+.btnNavColoring {
+    background-color: #D8E0E3;
+}
+/* Css Title */
+
+.btnGradesAddCourse {
+    background-color: #1b1d21;
+}

@@ -51,7 +51,7 @@ function updateCourse() {
     var isActive = $("#chkModifyCourseIsActive").prop("checked");
     var options = [programId, courseName, isActive, courseId];
     CourseDB.update(options);
-    $(location).prop('href', "#pageModifyCourse");
+    $(location).prop('href', "#pageGrades");
 }
 
 function deleteCourse() {
@@ -140,19 +140,22 @@ function generateCourseHtmlByProgramId(programName, programId){
             var row = results.rows.item(i);
             courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row.id + " href='#'><li class='liGrades'>" +
                 "<div class='spanGradeHeader'>" + row.name + "</div><br>" +
-                "<span class='spanGradeMain' id='spanGradeStats"+ row.id + "'>" +
-                "<span class='spanAG'>Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>%</span> " +
-                "<span class='spanCP'>Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%</span><br>" +
-                "<span class='spanCG'>Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%</span>" +
-                "<span class='spanRG'>Required for Goal: <span id='spanCalculatedGoal"+ row.id + "'></span>%</span><br>" +
-                "<br></span>" +
+                "<table class='spanGradeMain' id='spanGradeStats"+ row.id + "'>" +
+                "<tr>" +
+                "<td>Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>%</td> " +
+                "<td>Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%</td>" +
+                "</tr><tr>" +
+                "<td>Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%</td>" +
+                "<td>Required for Goal: <span id='spanCalculatedGoal"+ row.id + "'></span>%</td>" +
+                "</tr>" +
+                "</table>" +
                 "</li></a>";
             calculateGrade(row.id);
         }
         courseHtmlCode += "</ul>" +
-            "<button data-role='button' data-icon='plus' data-inline='true' data-row-id=" + programId + " " +
+            "<button data-row-id=" + programId + " " +
             "data-iconpos='left' class='btnGradesAddCourse ui-btn ui-icon-plus ui-btn-icon-left " +
-            "ui-shadow ui-corner-all'>Add Course</button>";
+            "ui-shadow ui-corner-all' style='background-color: #1b7add; color: white; text-shadow:1px 1px 1px black;'>Add Course</button>";
         var listGrades = $("#lstGrades");
         listGrades.html(listGrades.html() + courseHtmlCode);
 
@@ -188,13 +191,13 @@ function generateGradeHtmlByCourseId(courseId){
             for (var i=0; i < results.rows.length; i++) {
                 var row = results.rows.item(i);
                 gradeHtmlCode += "<li data-iconshadow='true'><a class='gradeListItem' data-row-id=" + row.id + " href='#'>" +
-                    row.name + " Weight: " + row.weight + " Grade: " + row.grade + "</a></li>";
+                    row.name + " Weight: " + row.weight.toFixed(1) + " Grade: " + row.grade.toFixed(1) + "%</a></li>";
                 totalWeights += row.weight;
                 totalGrades += row.grade;
             }
             var averageGrade = totalGrades / rowCount;
             gradeHtmlCode += "<li role='footer' data-type='list-divider' class='ui-li ui-li-divider'>" +
-                "Total Weights: " + totalWeights.toFixed(2) + "&nbsp; Average Grade: " + averageGrade.toFixed(2) + "%</li>";
+                "Total Weight: " + totalWeights.toFixed(1) + "&nbsp; Average Grade: " + averageGrade.toFixed(1) + "%</li>";
             var list = $("#courseGradeList");
             list.html(gradeHtmlCode);
             list.listview("refresh");

@@ -23,37 +23,34 @@
 <body>
     <!-- Home Page -->
     <div id="pageHome" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Home </h1>
+        <header data-role="header" data-theme="b" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #1e90ff">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #3e7eb2">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: slategrey">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" style="background-color: rgba(0,44,89,0.78)">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" data-theme="b">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" data-theme="b">Settings</a></li>
                 </ul>
             </div>
         </header>
         <section data-role="content">
             <h1 id="homePageTitle">Matt and Margo's Grades App</h1>
             <h4 id="subTitleGrade">Your Current Grade Average:</h4>
-            <div id="gradeAverageTitle"><span id="calculatedTotalGrade">Not Init</span></div>
-            <button id="btnHomeGrades" data-role="button" data-icon="bullets">Grades Listing</button>
+            <div id="gradeAverageTitle"><span id="calculatedTotalGrade"></span></div><br>
+            <button id="btnHomeGrades" data-role="button" data-icon="bullets" data-theme="b">Grades Listing</button>
+            <button id="btnHomeAbout" name="btnHomeAbout" data-role="button" data-icon="user" data-theme="b">Credits</button>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- Grades Page -->
     <div id="pageGrades" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Grades </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #1e90ff">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: slategrey">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: rgba(0,44,89,0.78)">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" data-theme="b">Settings</a></li>
                 </ul>
             </div>
         </header>
@@ -65,70 +62,66 @@
             </div>
             <div id="lstGrades"></div>
             <button name="btnGradesAddNewProgram" id="btnGradesAddNewProgram" data-role="button"
-                    data-icon="plus" data-iconpos="left">Add New Program</button>
+                    data-icon="plus" data-iconpos="left" data-theme="b">Add New Program</button>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- Settings Page -->
     <div id="pageSettings" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Settings </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #3e7eb2">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: #1e90ff">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" data-theme="b">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" style="background-color: rgba(0,44,89,0.78)">Settings</a></li>
                 </ul>
             </div>
         </header>
         <section data-role="content">
             <h2>Your Settings</h2>
-            <label for="txtProfileGoal">Target Grade (%):</label>
+            <label for="txtProfileGoal">Goal Grade (%):</label>
             <input type="text" id="txtProfileGoal" name="txtProfileGoal" data-clear-btn="true">
-            <button name="btnProfileSaveTarget" id="btnProfileSaveTarget" data-role="button">Save Target</button>
+            <button name="btnProfileSaveTarget" id="btnProfileSaveTarget" data-role="button" data-theme="b" style="background-color: #1b7add">Save Goal</button>
             <br>
             <label for="txtSettingsFilename">Filename for Restore/Backup Database:</label>
             <input type="text" id="txtSettingsFilename" name="txtSettingsFilename" data-clear-btn="true"
                 value="mygrades.db">
             <br>
             <button name="btnProfileRestoreDatabase" id="btnProfileRestoreDatabase" data-role="button"
-            >Restore Database From File</button>
+                    data-theme="b" style="background-color: red">Restore Database From File</button>
             <button name="btnProfileBackupDatabase" id="btnProfileBackupDatabase" data-role="button"
-                    >Backup Database To File</button>
+                    data-theme="b">Backup Database To File</button>
 
             <br>
             <button name="btnProfileClearDatabase" id="btnProfileClearDatabase" data-role="button"
                 data-theme="b" style="background-color: red">Clear Database</button>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- About Page -->
     <div id="pageAbout" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> About the Creators </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #3e7eb2">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #1e90ff">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: slategrey">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" data-theme="b">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" data-theme="b">Settings</a></li>
                 </ul>
             </div>
         </header>
         <section data-role="content">
-            <h2 style="text-align: center">The Creators of This App</h2>
+            <h3 style="text-align: center">About the Creators</h3>
             <div id="mattSection">
                 <br>
                 <img src="img/matt2.png" id="imgProfilePicMatt">
                 <br>
                 <p>Name: Matt Cormier</p>
-                <p>Program: 2nd Year Computer Programmer / Analyst</p>
-                <p>Motivated by: Developing Apps</p>
+                <p>Program: Computer Programmer / Analyst</p>
+                <p>Conestoga College</p>
                 <iframe src="http://ghbtns.com/github-btn.html?user=cormierm&repo=cormierm/GradesApp&type=follow"
                         allowtransparency="true" frameborder="0" scrolling="0" class="btnGitHub"></iframe>
             </div>
@@ -138,26 +131,24 @@
                 <img src="img/profilePic.jpg" id="imgProfilePicMargo">
                 <br>
                 <p>Name: Margo Tavares</p>
-                <p>Program: 2nd Year Computer Programmer / Analyst</p>
-                <p>Motivated by: Developing eye catching applications that users appreciate and creating beautiful implementation and design</p>
+                <p>Program: Computer Programmer / Analyst</p>
+                <p>Conestoga College</p>
                 <iframe src="http://ghbtns.com/github-btn.html?user=MargoTavares&repo=cormierm/GradesApp&type=follow"
                         allowtransparency="true" frameborder="0" scrolling="0" class="btnGitHub"></iframe>
             </div>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- Add Program Page -->
     <div id="pageAddProgram" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Add Page </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #1d3e72">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: #1e90ff">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" data-theme="b">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" style="background-color: rgba(0,44,89,0.78)">Settings</a></li>
                 </ul>
             </div>
         </header>
@@ -169,24 +160,22 @@
                 <input type="checkbox" id="chkAddProgIsActive" name="chkAddProgIsActive" data-role="checkbox" checked>
                 <label for="chkAddProgIsActive">Is Active?</label>
                 <br>
-                <button type="button" id="btnAddProgAdd" name="btnAddProgAdd">Add Program</button>
-                <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
+                <button type="button" id="btnAddProgAdd" name="btnAddProgAdd" data-theme="b" style="background-color: #1b7add">Add Program</button>
+                <button type="button" id="btnAddProgCancel" name="btnAddProgCancel" data-theme="b">Cancel</button>
             </form>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- Add Course Page -->
     <div id="pageAddCourse" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Add Page </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #3e7eb2">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: #1e90ff">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" data-theme="b">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" style="background-color: rgba(0,44,89,0.78)">Settings</a></li>
                 </ul>
             </div>
         </header>
@@ -202,24 +191,22 @@
                 <input type="checkbox" id="chkAddCourseIsActive" name="chkAddCourseIsActive" data-role="checkbox" checked>
                 <label for="chkAddCourseIsActive">Is Active?</label>
                 <br>
-                <button type="button" id="btnAddCourseAdd" name="btnAddCourseAdd">Add Course</button>
-                <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
+                <button type="button" id="btnAddCourseAdd" name="btnAddCourseAdd" data-theme="b" style="background-color: #1b7add">Add Course</button>
+                <button type="button" data-role="button" id="btnAddCourseCancel" name="btnAddCourseCancel" data-theme="b">Cancel</button>
             </form>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- Add Grade Page -->
     <div id="pageAddGrade" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Add Grade </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #1e90ff">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: slategrey">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: rgba(0,44,89,0.78)">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" data-theme="b">Settings</a></li>
                 </ul>
             </div>
         </header>
@@ -237,24 +224,22 @@
                 <label for="txtAddGradeGrade">Grade (%):</label>
                 <input type="number" name="txtAddGradeGrade" id="txtAddGradeGrade" data-clear-btn="true">
                 <br>
-                <button type="button" id="btnAddGradeAdd" name="btnAddGradeAdd">Add Grade</button>
-                <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
+                <button type="button" id="btnAddGradeAdd" name="btnAddGradeAdd" data-theme="b" style="background-color: #1b7add">Add Grade</button>
+                <button type="button" data-theme="b" id="btnAddGradeCancel" name="btnAddGradeCancel">Cancel</button>
             </form>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- Modify Program Page -->
     <div id="pageModifyProgram" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Modify Program </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #3e7eb2">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: #1e90ff">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" data-theme="b">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" style="background-color: rgba(0,44,89,0.78)">Settings</a></li>
                 </ul>
             </div>
         </header>
@@ -266,28 +251,26 @@
                 <input type="checkbox" id="chkModifyProgIsActive" name="chkModifyProgIsActive" data-role="checkbox" checked>
                 <label for="chkModifyProgIsActive">Is Active?</label>
                 <br>
-                <button type="button" id="btnModifyProgUpdate" name="btnModifyProgUpdate">Update Program</button>
-                <a href="#pageGrades"><input type="button" data-role="button" value="Cancel"></a>
+                <button type="button" id="btnModifyProgUpdate" name="btnModifyProgUpdate" data-theme="b" style="background-color: #1b7add">Update Program</button>
+                <button id="btnModifyProgCancel" name="btnModifyProgCancel" type="button" data-role="button" data-theme="b">Cancel</button>
                 <br>
                 <button id="btnModifyProgDelete" name="btnModifyProgDelete" data-role="button"
                         data-theme="b" style="background-color: red">Delete</button>
 
             </form>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- Modify Course Page -->
     <div id="pageModifyCourse" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Modify Course </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #3e7eb2">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: #1e90ff">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" data-theme="b">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" style="background-color: rgba(0,44,89,0.78)">Settings</a></li>
                 </ul>
             </div>
         </header>
@@ -298,9 +281,9 @@
             </h3><br>
             <ul id="courseGradeList" data-role="listview" data-type="horizontal"></ul><br>
             <button data-role="button" data-icon="plus" data-inline="true"
-               data-iconpos="left" id="btnModifyCourseAddGrade" name="btnModifyCourseAddGrade">Add Grade</button>
+               data-iconpos="left" id="btnModifyCourseAddGrade" name="btnModifyCourseAddGrade" data-theme="b">Add Grade</button>
             <button data-role="button" data-icon="gear" data-inline="true"
-               data-iconpos="left" id="btnModifyCourseEdit" name="btnModifyCourseEdit">Edit Course</button>
+               data-iconpos="left" id="btnModifyCourseEdit" name="btnModifyCourseEdit" data-theme="b" style="background-color: #1b7add">Edit Course</button>
             <form id="frmModifyCourse">
                 <label for="selModifyCoursePrograms">Program:</label>
                 <select name="selModifyCoursePrograms" id="selModifyCoursePrograms">
@@ -311,29 +294,27 @@
                 <input type="checkbox" id="chkModifyCourseIsActive" name="chkModifyCourseIsActive" data-role="checkbox" checked>
                 <label for="chkModifyCourseIsActive">Is Active?</label>
                 <br>
-                <button type="button" id="btnModifyCourseUpdate" name="btnModifyCourseUpdate">Update</button>
+                <button type="button" id="btnModifyCourseUpdate" name="btnModifyCourseUpdate" data-theme="b" style="background-color: #1b7add">Update</button>
                 <input type="button" id="btnModifyCourseCancel" name="btnModifyCourseCancel"
-                       data-role="button" value="Cancel">
+                       data-role="button" data-theme="b" value="Cancel">
                 <br>
                 <button type="button" id="btnModifyCourseDelete" name="btnModifyCourseDelete" data-role="button"
                         data-theme="b" style="background-color: red">Delete</button>
 
             </form>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
     <!-- Modify Grade Page -->
     <div id="pageModifyGrade" data-role="page">
-        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
-            <h1> Modify Grade </h1>
+        <header data-role="header" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#pageHome" data-icon="home" style="background-color: #5ac8fa">Home</a></li>
-                    <li><a href="#pageGrades" data-icon="bullets" style="background-color: #1d3e72">Grades</a></li>
-                    <li><a href="#pageAbout" data-icon="user" style="background-color: #43b2db">About</a></li>
-                    <li><a href="#pageSettings" data-icon="gear" style="background-color: #1e90ff">Settings</a></li>
+                    <li><a href="#pageHome" data-icon="home" data-theme="b">Home</a></li>
+                    <li><a href="#pageGrades" data-icon="bullets" data-theme="b">Grades</a></li>
+                    <li><a href="#pageSettings" data-icon="gear" style="background-color: rgba(0,44,89,0.78)">Settings</a></li>
                 </ul>
             </div>
         </header>
@@ -351,14 +332,14 @@
                 <label for="txtModifyGradeGrade">Grade (%):</label>
                 <input type="number" name="txtModifyGradeGrade" id="txtModifyGradeGrade" data-clear-btn="true">
                 <br>
-                <button type="button" id="btnModifyGradeUpdate" name="btnModifyGradeUpdate">Update Grade</button>
-                <a href="#pageModifyCourse"><input type="button" data-role="button" value="Cancel"></a>
+                <button type="button" id="btnModifyGradeUpdate" name="btnModifyGradeUpdate" data-theme="b" style="background-color: #1b7add">Update Grade</button>
+                <button type="button" id="btnModifyGradeCancel" name="btnModifyGradeCancel" data-theme="b">Cancel</button>
                 <br>
                 <button id="btnModifyGradeDelete" name="btnModifyGradeDelete" data-role="button"
                         data-theme="b" style="background-color: red">Delete</button>
             </form>
         </section>
-        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: #1e90ff">
+        <footer data-role="footer" data-theme="b" data-position="fixed" style="background-color: rgba(0,44,89,0.78)">
             <h1> &copy; 2017 Matt Cormier &amp; Margo Tavares </h1>
         </footer>
     </div>
