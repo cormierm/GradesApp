@@ -140,13 +140,13 @@ function generateCourseHtmlByProgramId(programName, programId){
             var row = results.rows.item(i);
             courseHtmlCode += "<a class='courseListItem' data-role='button' data-row-id=" + row.id + " href='#'><li class='liGrades'>" +
                 "<div class='spanGradeHeader'>" + row.name + "</div><br>" +
-                "<table class='spanGradeMain' id='spanGradeStats"+ row.id + "'>" +
+                "<table class='spanGradeMain' id='spanGradeStats"+ row.id + "' width='100%'>" +
                 "<tr>" +
-                "<td>Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>%</td> " +
-                "<td>Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%</td>" +
+                "<td><small>Average Grade: <span id='spanAverageGrade"+ row.id + "'></span>%</small></td> " +
+                "<td><small>Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%</small></td>" +
                 "</tr><tr>" +
-                "<td>Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%</td>" +
-                "<td>Required for Goal: <span id='spanCalculatedGoal"+ row.id + "'></span>%</td>" +
+                "<td><small>Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%</small></td>" +
+                "<td><small>Required for Goal: <span id='spanCalculatedGoal"+ row.id + "'></span>%</small></td>" +
                 "</tr>" +
                 "</table>" +
                 "</li></a>";
@@ -191,13 +191,19 @@ function generateGradeHtmlByCourseId(courseId){
             for (var i=0; i < results.rows.length; i++) {
                 var row = results.rows.item(i);
                 gradeHtmlCode += "<li data-iconshadow='true'><a class='gradeListItem' data-row-id=" + row.id + " href='#'>" +
-                    row.name + " Weight: " + row.weight.toFixed(1) + " Grade: " + row.grade.toFixed(1) + "%</a></li>";
+                    "<table width='100%'>" +
+                    "<tr><td colspan='2'>" + row.name + "</td></tr>" +
+                    "<tr>" +
+                        "<td><small>Weight: " + row.weight.toFixed(1) + "%</small></td>" +
+                        "<td><small>Grade: " + row.grade.toFixed(1) + "%</small></td>" +
+                    "</tr>" +
+                    "</table></a></li>";
                 totalWeights += row.weight;
                 totalGrades += row.grade;
             }
             var averageGrade = totalGrades / rowCount;
             gradeHtmlCode += "<li role='footer' data-type='list-divider' class='ui-li ui-li-divider'>" +
-                "Total Weight: " + totalWeights.toFixed(1) + "&nbsp; Average Grade: " + averageGrade.toFixed(1) + "%</li>";
+                "Total Weight: " + totalWeights.toFixed(1) + "%&nbsp; Average Grade: " + averageGrade.toFixed(1) + "%</li>";
             var list = $("#courseGradeList");
             list.html(gradeHtmlCode);
             list.listview("refresh");

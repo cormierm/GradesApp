@@ -222,3 +222,8 @@ textarea.error {
 .btnGradesAddCourse {
     background-color: #1b1d21;
 }
+
+tr, td {
+    margin: 0;
+    padding: 0 5px;
+}
