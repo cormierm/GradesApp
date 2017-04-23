@@ -24,9 +24,13 @@ h1, h2, h3, h4, p, label {
     color: #1b1d21;
 }
 
-h1#homePageTitle{
-    color: #1b1d21;
-    text-shadow: none;
+#homePageTitle{
+    height: 5%;
+    width: 55%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -1em;
 }
 
 h1.ui-title {
@@ -55,15 +59,8 @@ h1.ui-title {
     border-radius: 20px;
 }
 
-#homePageTitle {
-    font-size: 8vw;
-    text-align: center;
-    color: #1b1d21;
-    font-family: "Arial", Georgia, sans-serif;
-}
-
 #subTitleGrade {
-    font-size: 4vw;
+    font-size: 5vw;
     text-align: center;
     color: #1b1d21;
     font-family: "Arial", Georgia, sans-serif;
