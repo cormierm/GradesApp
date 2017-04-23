@@ -23,7 +23,16 @@ function calculateGrade(courseId){
             $("#spanAverageGrade" + courseId).html(totalAverageGrade.toFixed(1));
             $("#spanCurrentProgress" + courseId).html(totalWeights.toFixed(1));
             $("#spanCurrentGradesTotal" + courseId).html(totalGrades.toFixed(1));
-            $("#spanCalculatedGoal" + courseId).html(goal.toFixed(1));
+            if (goal < 0) {
+                $("#spanCalculatedGoal" + courseId).html("Required for Goal: 0.0%");
+            }
+            else if (goal < 100) {
+                $("#spanCalculatedGoal" + courseId).html("Required for Goal: " + goal.toFixed(1) + "%");
+            }
+            else {
+                $("#spanCalculatedGoal" + courseId).html("Goal is not attainable.");
+            }
+
         }
     }
     var options = [courseId];

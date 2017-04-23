@@ -92,8 +92,13 @@ function addGrade() {
 
 function setTargetGrade() {
     var targetGrade = $("#txtProfileGoal").val();
-    localStorage.setItem("targetGrade", targetGrade);
-    alert("Target Grade set to: " + targetGrade);
+    if (isNaN(targetGrade) || targetGrade > 100 || targetGrade < 50) {
+        alert("Goal Grade must be between 50 and 100!");
+    }
+    else {
+        localStorage.setItem("targetGrade", targetGrade);
+        alert("Target Grade set to: " + targetGrade);
+    }
 }
 
 function clearDatabase() {
@@ -146,7 +151,7 @@ function generateCourseHtmlByProgramId(programName, programId){
                 "<td><small>Current Progress: <span id='spanCurrentProgress"+ row.id + "'></span>%</small></td>" +
                 "</tr><tr>" +
                 "<td><small>Current Grades Total: <span id='spanCurrentGradesTotal"+ row.id + "'></span>%</small></td>" +
-                "<td><small>Required for Goal: <span id='spanCalculatedGoal"+ row.id + "'></span>%</small></td>" +
+                "<td><small><span id='spanCalculatedGoal"+ row.id + "'></span></small></td>" +
                 "</tr>" +
                 "</table>" +
                 "</li></a>";

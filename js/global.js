@@ -195,6 +195,13 @@ function init() {
     $("#pageHome").on("pageshow", pageHome_pageshow);
     $("#pageSettings").on("pageshow", pageSettings_pageshow);
 
+    $("#frmAddProg").submit(btnAddProgAdd_click);
+    $("#frmAddCourse").submit(btnAddCourseAdd_click);
+    $("#frmAddGrade").submit(btnAddGradeAdd_click);
+    $("#frmModifyProg").submit(btnModifyProgUpdate_click);
+    $("#frmModifyCourse").submit(btnModifyCourseUpdate_click);
+    $("#frmModifyGrade").submit(btnModifyGradeUpdate_click);
+
     if(localStorage.getItem("showIsActiveOnly") === null){
         localStorage.setItem("showIsActiveOnly", false);
     }
